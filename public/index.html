@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AllAboard!</title>
+	<link rel='stylesheet' href='styles.css' />
+	<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+
+
+</head>
+<body>
+	<h2> AllAboard </h2>
+	<h4> employee onboarding & management </h4>
+	<div class="employeeList"></div>
+	<h3> Add a new employee </h3>
+	<form action="/employees" method="POST" id='addEmployeeForm'>
+            <input id="first" type="text" placeholder="First Name" name="first">
+            <input id="last" type="text" placeholder="Last Name" name="last"><br>
+       		<input id="email" type="text" placeholder="Email" name="email"><br>
+       		<input id="phone" type="text" placeholder="Phone" name="phone"><br>
+       		<label for="hired">Hired Date</label>
+       		<input id="hired" type="date" name="hired"><br>
+       		<label for="start">Start Date</label>
+       		<input id="start" type="date" name="start"><br>
+
+         
+            <button type="submit" id="submitButton" form="addEmployeeForm">Submit</button>
+        </form>
+
+<div id='calendar'></div>
+
+
+<!-- <form action="/traininglist" method="POST" id="traininglist">
+	<label for="chooseI9Option">I-9 form complete?</label>
+    <select name="i9form" class="checklistDropDown" id="chooseI9Option"><option value="yes" name="yes" class="I9Yes">Yes</option><option value="no" name="no" class="I9No">No</option><option value="incomplete" name="incomplete" class="I9incomplete">Incomplete documents</option></select><br> -->
+
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script src="app.js"></script>
+<!-- <script src='fullcalendar/lib/jquery.min.js'></script> -->
+<script src='fullcalendar/lib/moment.min.js'></script>
+<script src='fullcalendar/fullcalendar.js'></script>
+<script src="https://use.fontawesome.com/80b61f6b56.js"></script>    
+</body>
+</html>

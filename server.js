@@ -160,13 +160,7 @@ app.put('/employees/:_id', function(req, res) {
 
 function handleEmployeeEmail(req, res) {
     
-    var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'frontendmanager656@gmail.com', // Your email id
-            pass: 'Terrier35' // Your password
-        }
-    });
+    
 
     var text = 'Hello world from \n\n' + req.body.name;
 

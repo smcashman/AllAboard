@@ -12,33 +12,81 @@
 	<h2> AllAboard </h2>
 	<h4> employee onboarding & management </h4>
 	<div class="employeeList"></div>
-	<h3> Add a new employee </h3>
+	<div class="traininglist"></div>
+	<h3 class="formtoggle"> Add a new employee </h3>
+
+	<div class="formWrapper">
 	<form action="/employees" method="POST" id='addEmployeeForm'>
             <input id="first" type="text" placeholder="First Name" name="first">
             <input id="last" type="text" placeholder="Last Name" name="last"><br>
        		<input id="email" type="text" placeholder="Email" name="email"><br>
        		<input id="phone" type="text" placeholder="Phone" name="phone"><br>
-       		<label for="hired">Hired Date</label>
-       		<input id="hired" type="date" name="hired"><br>
        		<label for="start">Start Date</label>
        		<input id="start" type="date" name="start"><br>
+       		<form action="/traininglist" method="POST" id="training">
+			<label for="I9">I-9 form complete?</label>
+    		<select name="I9" class="checklistDropDown" id="I9"><option value="yes" name="yes" class="I9Yes">Yes</option><option value="no" name="no" class="I9No">No</option><option value="incomplete" name="incomplete" class="I9incomplete">Incomplete documents</option></select><br>
+    		<label for="W4">W-4 form complete?</label>
+    		<select name="W4" class="checklistDropDown" id="W4"><option value="yes" name="yes" class="W4Yes">Yes</option><option value="no" name="no" class="W4No">No</option><option value="incomplete" name="incomplete" class="W4incomplete">Incomplete documents</option></select><br>
+    		<label for="International">International Student?</label>
+    		<select name="International" class="checklistDropDown" id="International"><option value="yes" name="yes" class="IntlYes">Yes</option><option value="no" name="no" class="IntlNo">No</option></select><br>
+    		<label for="PayOption">Pay Method</label>
+    		<select name="PayOption" class="checklistDropDown" id="PayOption"><option value="PayCard" name="PayCard" class="paycard">Paycard</option><option value="directd" name="directd" class="directdep">Direct Deposit</option></select><br>
+    		<label for="Register">Register Training</label>
+    		<select name="Register" class="checklistDropDown" id="Register"><option value="Complete" name="Complete" class="RegTrcomplete">Complete</option><option value="incomplete" name="incomplete" class="trincomplete">Incomplete</option><option value="practice" name="practice" class="trpractice">Needs Practice</option></select><br>
+    		<label for="RegisterDate">Date Complete</label>
+    		<input id="RegisterDate" type="date" name="RegisterDate"><br>
+    		<label for="Refunds">Returns Training</label>
+    		<select name="Refunds" class="checklistDropDown" id="Refunds"><option value="Complete" name="Complete" class="Refundscomplete">Complete</option><option value="incomplete" name="incomplete" class="refundsincomplete">Incomplete</option><option value="practice" name="practice" class="refundspractice">Needs Practice</option></select><br>
+    		<label for="ReturnsDate">Date Complete</label>
+    		<input id="ReturnsDate" type="date" name="ReturnsDate"><br>
+    		<label for="CustServ">Customer Service Training</label>
+    		<select name="CustServ" class="checklistDropDown" id="CustServ"><option value="Complete" name="Complete" class="CScomplete">Complete</option><option value="incomplete" name="incomplete" class="CSincomplete">Incomplete</option><option value="practice" name="practice" class="CSpractice">Needs Practice</option></select><br>
+   	 		<label for="CSDate">Date Complete</label>
+    		<input id="CSDate" type="date" name="CSDate"><br>
+    		<label for="GM">General Merchandise Training</label>
+    		<select name="GM" class="checklistDropDown" id="GM"><option value="Complete" name="Complete" class="GMcomplete">Complete</option><option value="incomplete" name="incomplete" class="GMincomplete">Incomplete</option><option value="practice" name="practice" class="GMpractice">Needs Practice</option></select><br>
+    		<label for="GMDate">Date Complete</label>
+    		<input id="GMDate" type="date" name="GMDate"><br>
+    		<label for="TextDepart">Text Training</label>
+    		<select name="TextDepart" class="checklistDropDown" id="TextDepart"><option value="Complete" name="Complete" class="TXcomplete">Complete</option><option value="incomplete" name="incomplete" class="TXincomplete">Incomplete</option><option value="practice" name="practice" class="TXpractice">Needs Practice</option></select><br>
+    		<label for="TXDate">Date Complete</label>
+    		<input id="TXDate" type="date" name="TXDate"><br>
 
          
             <button type="submit" id="submitButton" form="addEmployeeForm">Submit</button>
         </form>
+    </div>
 
-<div id='calendar'></div>
 
 
-<!-- <form action="/traininglist" method="POST" id="traininglist">
-	<label for="chooseI9Option">I-9 form complete?</label>
-    <select name="i9form" class="checklistDropDown" id="chooseI9Option"><option value="yes" name="yes" class="I9Yes">Yes</option><option value="no" name="no" class="I9No">No</option><option value="incomplete" name="incomplete" class="I9incomplete">Incomplete documents</option></select><br> -->
+
+<!-- <div id='wrap'>
+
+        <div id='external-events'>
+            <div id='external-events-listing'>
+                <h4>Draggable Events</h4>
+                <div class='fc-event'>Sara Cashman</div>
+                <div class='fc-event'>Kate Perry</div>
+                <div class='fc-event'>Abby Plummer</div>
+                <div class='fc-event'>Bort</div>
+                <div class='fc-event'>Bookstore Ghost</div>
+            </div>
+            <p>
+                <input type='checkbox' id='drop-remove'  checked='checked'/>
+                <label for='drop-remove'>remove after drop</label>
+            </p>
+        </div> -->
+
+    <!--     <div id='calendar'></div> -->
 
 <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 <script src="app.js"></script>
 <!-- <script src='fullcalendar/lib/jquery.min.js'></script> -->
+<script src="fullcalendar/lib/jquery-ui.min.js"></script>
 <script src='fullcalendar/lib/moment.min.js'></script>
 <script src='fullcalendar/fullcalendar.js'></script>
-<script src="https://use.fontawesome.com/80b61f6b56.js"></script>    
+<script src="https://use.fontawesome.com/80b61f6b56.js"></script>
+<script type='text/javascript' src='fullcalendar/gcal.js'></script>    
 </body>
 </html>

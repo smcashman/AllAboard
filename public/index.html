@@ -13,7 +13,7 @@
 	<h4> employee onboarding & management </h4>
 	<div class="employeeList"></div>
 	<div class="traininglist"></div>
-	<h3 class="formtoggle"> Add a new employee </h3>
+	<button class="formtoggle"> Add a new employee </button>
 
 	<div class="formWrapper">
 	<form action="/employees" method="POST" id='addEmployeeForm'>
@@ -58,6 +58,16 @@
         </form>
     </div>
 
+
+
+<div id="emailcontainer">
+<h1>Mailer In Node.JS</h1>
+<input id="to" type="text" placeholder="Enter E-mail ID where you want to send" />
+<input id="subject" type="text" placeholder="Write Subject" />
+<textarea id="content" cols="40" rows="5" placeholder="Write what you want to send"></textarea>
+<button id="sendemail">Send Email</button>
+<span id="message"></span>
+</div>
 
 
 

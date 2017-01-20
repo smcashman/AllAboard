@@ -16,9 +16,20 @@
 	display: none;
 }
 
+.submitChecklistButton{
+	display: none;
+}
+/*
 .trainingChecklist{
 	display:none;
+}*/
+
+#emailcontainer{
+	display: none;
 }
+/*.traininglist {
+	display: none;
+}*/
 
 body {
         margin-top: 40px;

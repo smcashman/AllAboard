@@ -5,213 +5,238 @@ $(document).ready(function() {
             $.getJSON("http://localhost:8080/employees", function(data) {
 
 
-                        $.each(data, function(index, value) {
+                    $.each(data, function(index, value) {
 
 
-                            $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><span class="employeeEmail">' + value.email + ' </span><br><span class="employeePhone">' + value.phone + ' </span><br><span class="hireddate">' + value.hired + ' </span><br><span class="startdate">' + value.start + ' </span><br><i class="fa fa-envelope-o" aria-hidden="true"></i><i class="fa fa-pencil-square-o editButton" aria-hidden="true" id="editButton"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><i class="fa fa-check-square showChecklist" id="'+value._id+'" aria-hidden="true"></i><button class="updateButton">Update</button></p></div>')
+                        $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><span class="employeeEmail">' + value.email + ' <i class="fa fa-envelope-o sendMail" aria-hidden="true"></i></span><br><span class="employeePhone">' + value.phone + ' </span><br><span class="startdate">' + value.start + ' </span><br><button class= "editButton" id="editButton">Edit Info</button><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><button class="showChecklist" id="' + value._id + '">Show Training Checklist</button><button class="updateButton">Update</button></p></div>')
+
+                        $(".traininglist").append('<div class="checklistBox" id=""><p class=' + value._id + ' style="display:none"><button class="updateChecklistButton">Update</button><br><span class="I9"> I9 Complete? ' + value.I9 + ' </span><br><span class="W4"> W4 Complete? ' + value.W4 + ' </span><br><span class="International"> Are they an international student? ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose? ' + value.PayOption + '</span><br><span class="Register">Have they been register trained? ' + value.Register + '</span><br><span class="RegisterDate">Training Date: ' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns? ' + value.Refunds + '</span><br><span class="ReturnsDate">Training Date: ' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service? ' + value.CustServ + '</span><br><span class="CSDate">Training Date: ' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise? ' + value.GM + '</span><br><span class="GMDate">Training Date: ' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks? ' + value.TextDepart + '</span><br><span class="TXDate">Training Date: ' + value.TXDate + '</span><br><button class="submitChecklistButton">Submit Changes</button></p></div>')
 
 
-                        });
+                    });
 
 
-                        $('.employeeList').on('click', 'div p i.showChecklist', function(e) {
+                    $('.employeeList').on('click', 'div p button.showChecklist', function(e) {
+                        $('.traininglist div p').hide();
+                        var idToShow = $(this).parent('p').attr('class')
+                        console.log(idToShow)
+                        $('.traininglist div p.' + idToShow).show();
 
-                            $.each(data, function(index, value) {
+                    });
+
+                    $('.employeeList').on('click', 'div p i.deleteButton', function(e) {
+                        console.log('OW')
+
+                        var buttonId = $(this).attr('id');
+                        console.log(buttonId)
+                        $.ajax({
+                            url: "http://localhost:8080/employees/" + buttonId,
+                            type: "Delete",
+                            success: function() {
+                                console.log($('i#' + buttonId).parent('p').parent('div'));
+                                $('i#' + buttonId).closest('div').remove();
+
+                                console.log("item deleted");
+
+                            }
+                        })
+
+                    });
+                    $('.employeeList').on('click', 'div p button#editButton', function(e) {
+                        $(this).parent("p").children('.updateButton').show();
+
+                        var first = $(this).parent("p").children("span.firstName").text();
+                        $(this).parent("p").children('span.firstName').html("<input id='editName' name='editName' type='text' value='" + first + "'>")
+                        var last = $(this).parent("p").children("span.lastName").text();
+                        $(this).parent("p").children('span.lastName').html("<input id='editLastName' name='editLastName' type='text' value='" + last + "'>")
+                        var email = $(this).parent("p").children("span.employeeEmail").text();
+                        $(this).parent("p").children('span.employeeEmail').html("<input id='editEmail' name='editEmail' type='text' value='" + email + "'>")
+                        var phone = $(this).parent("p").children("span.employeePhone").text();
+                        $(this).parent("p").children('span.employeePhone').html("<input id='editPhone' name='editPhone' type='text' value='" + phone + "'>")
+                        var start = $(this).parent("p").children("span.startdate").text();
+                        $(this).parent("p").children('span.startdate').html("<input id='editStartDate' name='editStartDate' type='text' value='" + start + "'>")
 
 
-                             $(".traininglist").append('<div class="checklistBox"><p class=' + value._id + '><span class="I9"> I9 Complete?' + value.I9 + ' </span><br><span class="W4"> W4 Complete?' + value.W4 + ' </span><br><span class="International"> Are they an international student? '+value.International+'</span><br><span class="PayOption"> Which pay option did they choose? '+value.PayOption+'</span><br><span class="Register">Have they been register trained?'+value.Register+'</span><br><span class="RegisterDate">Training Date'+value.RegisterDate+'</span><br><span class="Refunds"> Have they been trained on returns?'+value.Refunds+'</span><br><span class="ReturnsDate">Training Date'+value.ReturnsDate+'</span><br><span class="CustServ">Have they been trained on customer service?'+value.CustServ+'</span><br><span class="CSDate">Training Date '+value.CSDate+'</span><br><span class="GM">Have they been trained on general merchandise? '+value.GM+'</span><br><span class="GMDate">Training Date'+value.GMDate+'</span><br><span class="TextDepart"> Have they been trained in textbooks?'+value.TextDepart+'</span><br><span class="TXDate">Training Date'+value.TXDate+'</span></p></div>')
+                        $('.updateButton').click(function() {
+                        	console.log("CLERCKED")
+                            var buttonClassUpdate = $(this).parent('p').attr('class')
+                            var editedFirst = $('p.' + buttonClassUpdate).children('span').children('input#editName').val();
+                            var editedLast = $('p.' + buttonClassUpdate).children('span').children('input#editLastName').val();
+                            var editedEmail = $('p.' + buttonClassUpdate).children('span').children('input#editEmail').val();
+                            var editedPhone = $('p.' + buttonClassUpdate).children('span').children('input#editPhone').val();
+                            var editedStart = $('p.' + buttonClassUpdate).children('span').children('input#editStartDate').val();
 
-                                            });
-                                  });
 
 
+                            var updateObject = new Object();
+                            updateObject._id = buttonClassUpdate;
+                            updateObject.first = editedFirst;
+                            updateObject.last = editedLast;
+                            updateObject.email = editedEmail;
+                            updateObject.phone = editedPhone;
+                            updateObject.start = editedStart;
 
+                            console.log(updateObject);
 
-                        // $('#deleteButton').click(function() {
-                        $('.employeeList').on('click', 'div p i.deleteButton', function(e) {
-                            console.log('OW')
-
-                            var buttonId = $(this).attr('id');
-                            console.log(buttonId)
                             $.ajax({
-                                url: "http://localhost:8080/employees/" + buttonId,
-                                type: "Delete",
+                                url: "http://localhost:8080/employees/" + buttonClassUpdate,
+                                type: "PUT",
+                                data: updateObject,
                                 success: function() {
-                                    console.log($('i#' + buttonId).parent('p').parent('div'));
-                                    $('i#' + buttonId).closest('div').remove();
 
-                                    console.log("item deleted");
+                                    console.log(buttonClassUpdate);
 
                                 }
-                            })
 
+
+                            });
                         });
-                        $('.employeeList').on('click', 'div p i#editButton', function(e) {
-                                    $(this).parent("p").children('.updateButton').show();
 
-                                    var first = $(this).parent("p").children("span.firstName").text();
-                                    $(this).parent("p").children('span.firstName').html("<input id='editName' name='editName' type='text' value='" + first + "'>")
-                                    var last = $(this).parent("p").children("span.lastName").text();
-                                    $(this).parent("p").children('span.lastName').html("<input id='editLastName' name='editLastName' type='text' value='" + last + "'>")
-                                    var email = $(this).parent("p").children("span.employeeEmail").text();
-                                    $(this).parent("p").children('span.employeeEmail').html("<input id='editEmail' name='editEmail' type='text' value='" + email + "'>")
-                                    var phone = $(this).parent("p").children("span.employeePhone").text();
-                                    $(this).parent("p").children('span.employeePhone').html("<input id='editPhone' name='editPhone' type='text' value='" + phone + "'>")
-                                    var hired = $(this).parent("p").children("span.hireddate").text();
-                                    $(this).parent("p").children('span.hireddate').html("<input id='editHireDate' name='editHireDate' type='text' value='" + hired + "'>")
-                                    var start = $(this).parent("p").children("span.startdate").text();
-                                    $(this).parent("p").children('span.startdate').html("<input id='editStartDate' name='editStartDate' type='text' value='" + start + "'>")
+                    });
 
 
-                                    $('.updateButton').click(function() {
+				$('.updateChecklistButton').click(function(){
+					$('.submitChecklistButton').show()
 
-                                        var buttonClassUpdate = $(this).parent('p').attr('class')
-                                        var editedFirst = $('p.' + buttonClassUpdate).children('span').children('input#editName').val();
-                                        var editedLast = $('p.' + buttonClassUpdate).children('span').children('input#editLastName').val();
-                                        var editedEmail = $('p.' + buttonClassUpdate).children('span').children('input#editEmail').val();
-                                        var editedPhone = $('p.' + buttonClassUpdate).children('span').children('input#editPhone').val();
-                                        var editedHired = $('p.' + buttonClassUpdate).children('span').children('input#editHireDate').val();
-                                        var editedStart = $('p.' + buttonClassUpdate).children('span').children('input#editStartDate').val();
+                        var i9 = $(this).parent("p").children("span.I9").text();
+                        $(this).parent("p").children('span.I9').html('<label for="editi9">I-9 form complete?</label><select name="editi9" class="checklistDropDown" id="editi9"><option value="yes" name="yes">Yes</option><option value="no" name="no">No</option><option value="incomplete" name="incomplete">Incomplete documents</option></select>')
+
+                        var w4 = $(this).parent("p").children("span.W4").text();
+                        $(this).parent("p").children('span.W4').html('<label for="editw4">W-4 form complete?</label><select class="checklistDropDown" id="editw4" name="editw4"><option value="yes" name="yes">Yes</option><option value="no" name="no">No</option><option value="incomplete" name="incomplete">Incomplete documents</option></select><br>')
+
+                        var intl = $(this).parent("p").children("span.International").text();
+                        $(this).parent("p").children('span.International').html('<label for="editintl">International Student?</label><select name="editintl" class="checklistDropDown" id="editintl"><option value="yes" name="yes">Yes</option><option value="no" name="no">No</option></select><br>')
+
+                        var payopt = $(this).parent("p").children("span.PayOption").text();
+                        $(this).parent("p").children('span.PayOption').html('<label for="editPay">Pay Method</label><select name="editPay" class="checklistDropDown" id="editPay"><option value="PayCard" name="PayCard">Paycard</option><option value="directd" name="directd">Direct Deposit</option></select><br>')
+
+                        var reg = $(this).parent("p").children("span.Register").text();
+                        $(this).parent("p").children('span.Register').html('<label for="editRegister">Register Training</label><select name="editRegister" class="checklistDropDown" id="editRegister"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+
+                        var regDate = $(this).parent("p").children("span.RegisterDate").text();
+                        $(this).parent("p").children('span.RegisterDate').html("<input id='editRegDate' name='editRegDate' type='date' value='" + regDate + "'>")
+
+                        var refunds = $(this).parent("p").children("span.Refunds").text();
+                        $(this).parent("p").children('span.Refunds').html('<label for="editreturns">Returns Training</label><select name="editreturns" class="checklistDropDown" id="editreturns"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+
+                        var refundsDate = $(this).parent("p").children("span.ReturnsDate").text();
+                        $(this).parent("p").children('span.ReturnsDate').html("<input id='editRefDate' name='editRefDate' type='date' value='" + refundsDate + "'>")
+
+                        var custoserv = $(this).parent("p").children("span.CustServ").text();
+                        $(this).parent("p").children('span.CustServ').html('<label for="editCS">Customer Service Training</label><select name="editCS" class="checklistDropDown" id="editCS"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+
+                        var custservDate = $(this).parent("p").children("span.CSDate").text();
+                        $(this).parent("p").children('span.CSDate').html("<input id='editCSdate' name='editCSdate' type='date' value='" + custservDate + "'>")
+
+                        var genmerch = $(this).parent("p").children("span.GM").text();
+                        $(this).parent("p").children('span.GM').html('<label for="editGM">General Merchandise Training</label><select name="editGM" class="checklistDropDown" id="editGM"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+
+                        var genmerchdate = $(this).parent("p").children("span.GMDate").text();
+                        $(this).parent("p").children('span.GMDate').html("<input id='editGMDate' name='editGMDate' type='date' value='" + genmerchdate + "'>")
+
+                        var txt = $(this).parent("p").children("span.TextDepart").text();
+                        $(this).parent("p").children('span.TextDepart').html('<label for="editTX">Text Training</label><select name="editTX" class="checklistDropDown" id="editTX"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+
+                        var txtDate = $(this).parent("p").children("span.TXDate").text();
+                        $(this).parent("p").children('span.TXDate').html("<input id='editTXdate' name='editTXdate' type='date' value='" + txtDate + "'>")
+
+
+                        $('.submitChecklistButton').click(function() {
+
+                            var buttonClassUpdate = $(this).parent('p').attr('class')
+                            var editedi9 = $('p.' + buttonClassUpdate).children('span').children('select#editi9').val();
+                            var editedw4 = $('p.' + buttonClassUpdate).children('span').children('select#editw4').val();
+                            var editedintl = $('p.' + buttonClassUpdate).children('span').children('select#editintl').val();
+                            var editedpay = $('p.' + buttonClassUpdate).children('span').children('select#editPay').val();
+                            var editedregister = $('p.' + buttonClassUpdate).children('span').children('select#editRegister').val();
+                            var editedregdate = $('p.' + buttonClassUpdate).children('span').children('input#editRegDate').val();
+                            var editedreturns = $('p.' + buttonClassUpdate).children('span').children('select#editreturns').val();
+                            var editedreturnsdate = $('p.' + buttonClassUpdate).children('span').children('input#editRefDate').val();
+                            var editedcs = $('p.' + buttonClassUpdate).children('span').children('select#editCS').val();
+                            var editedcsdate = $('p.' + buttonClassUpdate).children('span').children('input#editCSdate').val();
+                            var editedgm = $('p.' + buttonClassUpdate).children('span').children('select#editGM').val();
+                            var editedgmdate = $('p.' + buttonClassUpdate).children('span').children('input#editGMDate').val();
+                            var editedtxt = $('p.' + buttonClassUpdate).children('span').children('select#editTX').val();
+                            var editedtxtdate = $('p.' + buttonClassUpdate).children('span').children('input#editTXdate').val();
 
 
 
-                                        var updateObject = new Object();
-                                        updateObject._id = buttonClassUpdate;
-                                        updateObject.first = editedFirst;
-                                        updateObject.last = editedLast;
-                                        updateObject.email = editedEmail;
-                                        updateObject.phone = editedPhone;
-                                        updateObject.hired = editedHired;
-                                        updateObject.start = editedStart;
-                                        console.log(updateObject);
+                            var updateObject = new Object();
+                            updateObject._id = buttonClassUpdate;
+                            updateObject.I9 = editedi9;
+                            updateObject.W4 = editedw4;
+                            updateObject.International = editedintl;
+                            updateObject.Payment = editedpay;
+                            updateObject.Register = editedregister;
+                            updateObject.RegisterDate = editedregdate;
+                            updateObject.Refunds = editedreturns;
+                            updateObject.ReturnsDate = editedreturnsdate;
+                            updateObject.CustServ = editedcs;
+                            updateObject.CSDate = editedcsdate;
+                            updateObject.GM = editedgm;
+                            updateObject.GMDate = editedgmdate;
+                            updateObject.TextDepart = editedtxt;
+                            updateObject.TXDate = editedtxtdate;
+                            console.log(updateObject);
 
-                                        $.ajax({
-                                            url: "http://localhost:8080/employees/" + buttonClassUpdate,
-                                            type: "PUT",
-                                            data: updateObject,
-                                            success: function() {
+                            $.ajax({
+                                url: "http://localhost:8080/employees/" + buttonClassUpdate,
+                                type: "PUT",
+                                data: updateObject,
+                                success: function() {
 
-                                                console.log(buttonClassUpdate);
+                                    console.log(buttonClassUpdate);
 
-                                            }
+                                }
 
 
-                                        });
+                            });
+                      
+
+                    });
+
+				});
+
+				});
+
+
+                    $('.formtoggle').click(function() {
+                        $('.formWrapper').toggle();
+                        $('.trainingChecklist').toggle();
+                    });
+
+
+                    $('.employeeList').on('click', 'div p i.sendMail', function(e) {
+                            $('#emailcontainer').toggle();
+
+                            var to = $(this).parent('span.employeeEmail').text
+                            console.log(to);
+                            var to, from, subject, text;
+                            $("#sendemail").click(function() {
+                            	console.log("mail meh")
+                                    to = $("#to").val();
+                                    subject = $("#subject").val();
+                                    text = $("#content").val();
+                                    $("#message").text("Sending E-mail...Please wait");
+                                    $.get("http://localhost:8080/send", {
+                                            to: to,
+                                            subject: subject,
+                                            text: text
+                                        }, 
+                                        function(data) {
+                                            if (data == "sent") {
+                                                $("#message").empty().html("Email is been sent at "+to+".Please check inbox!");
+                                                }
+
+                                            });
                                     });
-
-								});
-						
-							  
-
-					
-
-                                    $('.formtoggle').click(function() {
-                                        $('.formWrapper').toggle();
-                                        $('.trainingChecklist').toggle();
-                                    });
-
-                                    
+                            });
 
 
-                                    // // full calendar
-
-                                    // function makeEventsDraggable() {
-                                    //     $(".fc-draggable").draggable({
-                                    //         zIndex: 999,
-                                    //         revert: true, // will cause the event to go back to its
-                                    //         revertDuration: false //  original position after the drag
-                                    //     });
-                                    // }
-
-                                    //     var dragged = null;
-
-                                    //     /* initialize the external events
-                                    //     -----------------------------------------------------------------*/
-
-                                    //     $('#external-events .fc-event').each(function() {
-
-                                    //         // store data so the calendar knows to render an event upon drop
-                                    //         $(this).data('event', {
-                                    //             title: $.trim($(this).text()), // use the element's text as the event title
-                                    //             stick: true // maintain when user navigates (see docs on the renderEvent method)
-                                    //         });
-
-                                    //         // make the event draggable using jQuery UI
-                                    //         $(this).draggable({
-                                    //             zIndex: 999,
-                                    //             revert: true, // will cause the event to go back to its
-                                    //             revertDuration: 0 //  original position after the drag
-                                    //         });
-
-                                    //     });
-
-
-                                    //     /* initialize the calendar
-                                    //     -----------------------------------------------------------------*/
-
-                                    //     var calendar = $('#calendar').fullCalendar({
-                                    //         googleCalendarApiKey: 'AIzaSyAuQJYARMDJHguyenuq9Uj03xEKrJIMFHI',
-                                    //         events: {
-                                    //             googleCalendarId: '8v3ebnkk7iq003gkfdag6g6hmo@group.calendar.google.com'
-                                    //         },
-                                    //         header: {
-                                    //             left: 'prev,next today',
-                                    //             center: 'title',
-                                    //             right: 'month,agendaWeek,agendaDay'
-                                    //         },
-                                    //         editable: true,
-                                    //         droppable: true, // this allows things to be dropped onto the calendar
-                                    //         dragRevertDuration: 0,
-                                    //         drop: function() {
-                                    //             makeEventsDraggable();
-                                    //             // is the "remove after drop" checkbox checked?
-                                    //             if ($('#drop-remove').is(':checked')) {
-                                    //                 // if so, remove the element from the "Draggable Events" list
-                                    //                 $(this).remove();
-                                    //             }
-                                    //         },
-                                    //         eventDragStop: function(event, jsEvent, ui, view) {
-                                    //             makeEventsDraggable();
-                                    //         },
-                                    //         eventResize: function(event, delta, revertFunc, jsEvent, ui, view) {
-                                    //             makeEventsDraggable();
-                                    //         },
-                                    //         viewRender: function() {
-                                    //             makeEventsDraggable();
-                                    //         },
-                                    //         eventDragStart: function(event, jsEvent, ui, view) {
-                                    //             dragged = [calendar, event];
-                                    //         },
-                                    //     });
-
-
-                                    //     /* Make external-events droppable
-                                    //     -----------------------------------------------------------------*/
-                                    //     $('#external-events-listing').droppable({
-                                    //         drop: function(event, ui) {
-                                    //             if (dragged) {
-                                    //                 var event = dragged[1];
-                                    //                 dragged[0].fullCalendar('removeEvents', event._id);
-                                    //                 var el = $("<div class='fc-event'>").appendTo(this).text(event.title);
-                                    //                 el.draggable({
-                                    //                     zIndex: 999,
-                                    //                     revert: true,
-                                    //                     revertDuration: 0
-                                    //                 });
-                                    //                 el.data('event', {
-                                    //                     title: event.title,
-                                    //                     id: event.id,
-                                    //                     stick: true
-                                    //                 });
-                                    //                 dragged = null;
-                                    //                 makeEventsDraggable();
-                                    //             }
-                                    //         }
-                                    //     });
-
-});
+                       
+                  
 
 
 
 
-  });
+            });

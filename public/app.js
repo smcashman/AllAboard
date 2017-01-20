@@ -7,10 +7,10 @@ $(document).ready(function() {
 
                     $.each(data, function(index, value) {
 
-
+                    	console.log(value.PayOption)
                         $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><span class="employeeEmail">' + value.email + ' <i class="fa fa-envelope-o sendMail" aria-hidden="true"></i></span><br><span class="employeePhone">' + value.phone + ' </span><br><span class="startdate">' + value.start + ' </span><br><button class= "editButton" id="editButton">Edit Info</button><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><button class="showChecklist" id="' + value._id + '">Show Training Checklist</button><button class="updateButton">Update</button></p></div>')
 
-                        $(".traininglist").append('<div class="checklistBox" id=""><p class=' + value._id + ' style="display:none"><button class="updateChecklistButton">Update</button><br><span class="I9"> I9 Complete? ' + value.I9 + ' </span><br><span class="W4"> W4 Complete? ' + value.W4 + ' </span><br><span class="International"> Are they an international student? ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose? ' + value.PayOption + '</span><br><span class="Register">Have they been register trained? ' + value.Register + '</span><br><span class="RegisterDate">Training Date: ' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns? ' + value.Refunds + '</span><br><span class="ReturnsDate">Training Date: ' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service? ' + value.CustServ + '</span><br><span class="CSDate">Training Date: ' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise? ' + value.GM + '</span><br><span class="GMDate">Training Date: ' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks? ' + value.TextDepart + '</span><br><span class="TXDate">Training Date: ' + value.TXDate + '</span><br><button class="submitChecklistButton">Submit Changes</button></p></div>')
+                        $(".traininglist").append('<div class="checklistBox" id=""><p class=' + value._id + ' style="display:none"><button class="updateChecklistButton">Update</button><br><span class="I9"> I9 Complete? ' + value.I9 + ' </span><br><span class="W4"> W4 Complete? ' + value.W4 + ' </span><br><span class="International"> Are they an international student? ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose? ' + value.PayOption + '</span><br><span class="Register">Have they been register trained? ' + value.Register + '</span><br><span class="RegisterDate">' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns? ' + value.Refunds + '</span><br><span class="ReturnsDate">' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service? ' + value.CustServ + '</span><br><span class="CSDate">' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise? ' + value.GM + '</span><br><span class="GMDate">' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks? ' + value.TextDepart + '</span><br><span class="TXDate">' + value.TXDate + '</span><br><button class="submitChecklistButton">Submit Changes</button></p></div>')
 
 
                     });
@@ -99,47 +99,107 @@ $(document).ready(function() {
 					$('.submitChecklistButton').show()
 
                         var i9 = $(this).parent("p").children("span.I9").text();
-                        $(this).parent("p").children('span.I9').html('<label for="editi9">I-9 form complete?</label><select name="editi9" class="checklistDropDown" id="editi9"><option value="yes" name="yes">Yes</option><option value="no" name="no">No</option><option value="incomplete" name="incomplete">Incomplete documents</option></select>')
+                        
+                        if (i9 == ' I9 Complete? yes '){
+                        $(this).parent("p").children('span.I9').html('<label for="editi9">I-9 form complete?</label><select name="editi9" class="checklistDropDown" id="editi9"><option value="yes" name="yes" selected>Yes</option><option value="no" name="no">No</option><option value="incomplete" name="incomplete">Incomplete documents</option></select>')
+                    	} else if (i9 == ' I9 Complete? no '){
+                    	$(this).parent("p").children('span.I9').html('<label for="editi9">I-9 form complete?</label><select name="editi9" class="checklistDropDown" id="editi9"><option value="no" name="no" selected >No</option><option value="yes" name="yes">Yes</option><option value="incomplete" name="incomplete">Incomplete documents</option></select>')
+                    	} else {
+                    		$(this).parent("p").children('span.I9').html('<label for="editi9">I-9 form complete?</label><select name="editi9" class="checklistDropDown" id="editi9"><option value="incomplete" name="incomplete" selected>Incomplete documents</option><option value="no" name="no">No</option><option value="yes" name="yes">Yes</option></select>')
+                    		}
 
                         var w4 = $(this).parent("p").children("span.W4").text();
-                        $(this).parent("p").children('span.W4').html('<label for="editw4">W-4 form complete?</label><select class="checklistDropDown" id="editw4" name="editw4"><option value="yes" name="yes">Yes</option><option value="no" name="no">No</option><option value="incomplete" name="incomplete">Incomplete documents</option></select><br>')
+                        
+                        if (w4 == ' W4 Complete? yes '){
+                        $(this).parent("p").children('span.W4').html('<label for="editw4">W-4 form complete?</label><select class="checklistDropDown" id="editw4" name="editw4"><option value="yes" name="yes" selected>Yes</option><option value="no" name="no">No</option><option value="incomplete" name="incomplete">Incomplete documents</option></select><br>')
+                    	} else if (w4 == ' W4 Complete? no '){
+                    	$(this).parent("p").children('span.W4').html('<label for="editw4">W-4 form complete?</label><select class="checklistDropDown" id="editw4" name="editw4"><option value="no" name="no" selected>No</option><option value="yes" name="yes">Yes</option><option value="incomplete" name="incomplete">Incomplete documents</option></select><br>')
+                    	}else {
+                    	$(this).parent("p").children('span.W4').html('<label for="editw4">W-4 form complete?</label><select class="checklistDropDown" id="editw4" name="editw4"><option value="incomplete" name="incomplete" selected>Incomplete documents</option><option value="no" name="no">No</option><option value="yes" name="yes">Yes</option></select><br>')
+                    	}
 
                         var intl = $(this).parent("p").children("span.International").text();
-                        $(this).parent("p").children('span.International').html('<label for="editintl">International Student?</label><select name="editintl" class="checklistDropDown" id="editintl"><option value="yes" name="yes">Yes</option><option value="no" name="no">No</option></select><br>')
+                       
+                        if (intl == ' Are they an international student? yes'){
+                        $(this).parent("p").children('span.International').html('<label for="editintl">International Student?</label><select name="editintl" class="checklistDropDown" id="editintl"><option value="yes" name="yes" selected>Yes</option><option value="no" name="no">No</option></select><br>')
+                    	} else {
+                    	$(this).parent("p").children('span.International').html('<label for="editintl">International Student?</label><select name="editintl" class="checklistDropDown" id="editintl"><option value="no" name="no" selected>No</option><option value="yes" name="yes">Yes</option></select><br>')
+                    	}
 
                         var payopt = $(this).parent("p").children("span.PayOption").text();
-                        $(this).parent("p").children('span.PayOption').html('<label for="editPay">Pay Method</label><select name="editPay" class="checklistDropDown" id="editPay"><option value="PayCard" name="PayCard">Paycard</option><option value="directd" name="directd">Direct Deposit</option></select><br>')
+                        console.log(payopt)
+                        if (payopt == ' Which pay option did they choose? Paycard'){
+                        $(this).parent("p").children('span.PayOption').html('<label for="editPay">Pay Method</label><select name="editPay" class="checklistDropDown" id="editPay"><option value="PayCard" name="PayCard" selected>Paycard</option><option value="directd" name="directd">Direct Deposit</option></select><br>')
+                    } else {
+                    	$(this).parent("p").children('span.PayOption').html('<label for="editPay">Pay Method</label><select name="editPay" class="checklistDropDown" id="editPay"><option value="directd" name="directd" selected>Direct Deposit</option><option value="PayCard" name="PayCard">Paycard</option></select><br>')
+                    }
 
                         var reg = $(this).parent("p").children("span.Register").text();
-                        $(this).parent("p").children('span.Register').html('<label for="editRegister">Register Training</label><select name="editRegister" class="checklistDropDown" id="editRegister"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                        
+                        if (reg == 'Have they been register trained? Complete'){
+                        $(this).parent("p").children('span.Register').html('<label for="editRegister">Register Training</label><select name="editRegister" class="checklistDropDown" id="editRegister"><option value="Complete" name="Complete" selected>Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    } else if (reg == 'Have they been register trained? Incomplete'){
+                    	$(this).parent("p").children('span.Register').html('<label for="editRegister">Register Training</label><select name="editRegister" class="checklistDropDown" id="editRegister"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete" selected>Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    }else {
+                    	$(this).parent("p").children('span.Register').html('<label for="editRegister">Register Training</label><select name="editRegister" class="checklistDropDown" id="editRegister"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected >Needs Practice</option></select><br>')
+                    }
 
                         var regDate = $(this).parent("p").children("span.RegisterDate").text();
+
                         $(this).parent("p").children('span.RegisterDate').html("<input id='editRegDate' name='editRegDate' type='date' value='" + regDate + "'>")
 
                         var refunds = $(this).parent("p").children("span.Refunds").text();
-                        $(this).parent("p").children('span.Refunds').html('<label for="editreturns">Returns Training</label><select name="editreturns" class="checklistDropDown" id="editreturns"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                        console.log(refunds)
+                        if (refunds == ' Have they been trained on returns? Complete'){
+                        $(this).parent("p").children('span.Refunds').html('<label for="editreturns">Returns Training</label><select name="editreturns" class="checklistDropDown" id="editreturns"><option value="Complete" name="Complete" selected>Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    } else if (refunds == ' Have they been trained on returns? incomplete'){
+                    	 $(this).parent("p").children('span.Refunds').html('<label for="editreturns">Returns Training</label><select name="editreturns" class="checklistDropDown" id="editreturns"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete" selected>Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    	} else {
+                    		 $(this).parent("p").children('span.Refunds').html('<label for="editreturns">Returns Training</label><select name="editreturns" class="checklistDropDown" id="editreturns"><option value="Complete" name="Complete" >Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected>Needs Practice</option></select><br>')
+                    	}
 
                         var refundsDate = $(this).parent("p").children("span.ReturnsDate").text();
                         $(this).parent("p").children('span.ReturnsDate').html("<input id='editRefDate' name='editRefDate' type='date' value='" + refundsDate + "'>")
 
                         var custoserv = $(this).parent("p").children("span.CustServ").text();
-                        $(this).parent("p").children('span.CustServ').html('<label for="editCS">Customer Service Training</label><select name="editCS" class="checklistDropDown" id="editCS"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                        
+                        if (custoserv == 'Have they been trained on customer service? Complete'){
+                        $(this).parent("p").children('span.CustServ').html('<label for="editCS">Customer Service Training</label><select name="editCS" class="checklistDropDown" id="editCS"><option value="Complete" name="Complete" selected>Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    } else if (custoserv == 'Have they been trained on customer service? Incomplete'){
+                    	$(this).parent("p").children('span.CustServ').html('<label for="editCS">Customer Service Training</label><select name="editCS" class="checklistDropDown" id="editCS"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete" selected>Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    } else {
+                    	$(this).parent("p").children('span.CustServ').html('<label for="editCS">Customer Service Training</label><select name="editCS" class="checklistDropDown" id="editCS"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected>Needs Practice</option></select><br>')
+                    }
 
                         var custservDate = $(this).parent("p").children("span.CSDate").text();
                         $(this).parent("p").children('span.CSDate').html("<input id='editCSdate' name='editCSdate' type='date' value='" + custservDate + "'>")
 
                         var genmerch = $(this).parent("p").children("span.GM").text();
-                        $(this).parent("p").children('span.GM').html('<label for="editGM">General Merchandise Training</label><select name="editGM" class="checklistDropDown" id="editGM"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                       
+                        if (genmerch == 'Have they been trained on general merchandise? Complete'){
+                        $(this).parent("p").children('span.GM').html('<label for="editGM">General Merchandise Training</label><select name="editGM" class="checklistDropDown" id="editGM"><option value="Complete" name="Complete" selected>Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    } else if (genmerch == 'Have they been trained on general merchandise? Incomplete'){
+                    	 $(this).parent("p").children('span.GM').html('<label for="editGM">General Merchandise Training</label><select name="editGM" class="checklistDropDown" id="editGM"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete" selected>Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    } else {
+                    	 $(this).parent("p").children('span.GM').html('<label for="editGM">General Merchandise Training</label><select name="editGM" class="checklistDropDown" id="editGM"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected>Needs Practice</option></select><br>')
+                    }
 
                         var genmerchdate = $(this).parent("p").children("span.GMDate").text();
                         $(this).parent("p").children('span.GMDate').html("<input id='editGMDate' name='editGMDate' type='date' value='" + genmerchdate + "'>")
 
                         var txt = $(this).parent("p").children("span.TextDepart").text();
-                        $(this).parent("p").children('span.TextDepart').html('<label for="editTX">Text Training</label><select name="editTX" class="checklistDropDown" id="editTX"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                        console.log(txt)
+                        if (txt == ' Have they been trained in textbooks? Complete'){
+                        $(this).parent("p").children('span.TextDepart').html('<label for="editTX">Text Training</label><select name="editTX" class="checklistDropDown" id="editTX"><option value="Complete" name="Complete" selected>Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    } else if (txt == ' Have they been trained in textbooks? incomplete'){
+                    	$(this).parent("p").children('span.TextDepart').html('<label for="editTX">Text Training</label><select name="editTX" class="checklistDropDown" id="editTX"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete" selected>Incomplete</option><option value="practice" name="practice">Needs Practice</option></select><br>')
+                    } else {
+                    		$(this).parent("p").children('span.TextDepart').html('<label for="editTX">Text Training</label><select name="editTX" class="checklistDropDown" id="editTX"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected>Needs Practice</option></select><br>')
+                    }
 
                         var txtDate = $(this).parent("p").children("span.TXDate").text();
                         $(this).parent("p").children('span.TXDate').html("<input id='editTXdate' name='editTXdate' type='date' value='" + txtDate + "'>")
-
+                      
 
                         $('.submitChecklistButton').click(function() {
 
@@ -209,12 +269,14 @@ $(document).ready(function() {
                     $('.employeeList').on('click', 'div p i.sendMail', function(e) {
                             $('#emailcontainer').toggle();
 
-                            var to = $(this).parent('span.employeeEmail').text
+                           to = $(this).parent('span.employeeEmail').text();
+                           $('input#to').val(to)
                             console.log(to);
-                            var to, from, subject, text;
+                            var from, subject, text;
                             $("#sendemail").click(function() {
                             	console.log("mail meh")
-                                    to = $("#to").val();
+                              
+
                                     subject = $("#subject").val();
                                     text = $("#content").val();
                                     $("#message").text("Sending E-mail...Please wait");

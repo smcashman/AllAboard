@@ -19,7 +19,7 @@ var NewEmployee = new Schema({
     I9: String,
     W4: String,
     International: String,
-    Payment: String,
+    PayOption: String,
     Register: String,
     RegisterDate: String,
     Refunds: String,
@@ -69,7 +69,7 @@ app.post('/employees', function(req, res) {
         TextDepart: req.body.TextDepart,
         TXDate: req.body.TXDate
     });
-
+    console.log(req.body.PayOption)
     employee.save(function(err) {
         if (err)
             res.send(err);

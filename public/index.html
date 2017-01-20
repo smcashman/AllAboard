@@ -11,9 +11,10 @@
 <body>
 	<h2> AllAboard </h2>
 	<h4> employee onboarding & management </h4>
+	<button class="formtoggle"> Add a new employee </button>
 	<div class="employeeList"></div>
 	<div class="traininglist"></div>
-	<button class="formtoggle"> Add a new employee </button>
+	
 
 	<div class="formWrapper">
 	<form action="/employees" method="POST" id='addEmployeeForm'>
@@ -33,23 +34,23 @@
     		<label for="PayOption">Pay Method</label>
     		<select name="PayOption" class="checklistDropDown" id="PayOption"><option value="PayCard" name="PayCard" class="paycard">Paycard</option><option value="directd" name="directd" class="directdep">Direct Deposit</option></select><br>
     		<label for="Register">Register Training</label>
-    		<select name="Register" class="checklistDropDown" id="Register"><option value="Complete" name="Complete" class="RegTrcomplete">Complete</option><option value="incomplete" name="incomplete" class="trincomplete">Incomplete</option><option value="practice" name="practice" class="trpractice">Needs Practice</option></select><br>
+    		<select name="Register" class="checklistDropDown" id="Register"><option value="Complete" name="Complete" class="RegTrcomplete">Complete</option><option value="Incomplete" name="Incomplete" class="trincomplete">Incomplete</option><option value="practice" name="practice" class="trpractice">Needs Practice</option></select><br>
     		<label for="RegisterDate">Date Complete</label>
     		<input id="RegisterDate" type="date" name="RegisterDate"><br>
     		<label for="Refunds">Returns Training</label>
-    		<select name="Refunds" class="checklistDropDown" id="Refunds"><option value="Complete" name="Complete" class="Refundscomplete">Complete</option><option value="incomplete" name="incomplete" class="refundsincomplete">Incomplete</option><option value="practice" name="practice" class="refundspractice">Needs Practice</option></select><br>
+    		<select name="Refunds" class="checklistDropDown" id="Refunds"><option value="Complete" name="Complete" class="Refundscomplete">Complete</option><option value="Incomplete" name="Incomplete" class="refundsincomplete">Incomplete</option><option value="practice" name="practice" class="refundspractice">Needs Practice</option></select><br>
     		<label for="ReturnsDate">Date Complete</label>
     		<input id="ReturnsDate" type="date" name="ReturnsDate"><br>
     		<label for="CustServ">Customer Service Training</label>
-    		<select name="CustServ" class="checklistDropDown" id="CustServ"><option value="Complete" name="Complete" class="CScomplete">Complete</option><option value="incomplete" name="incomplete" class="CSincomplete">Incomplete</option><option value="practice" name="practice" class="CSpractice">Needs Practice</option></select><br>
+    		<select name="CustServ" class="checklistDropDown" id="CustServ"><option value="Complete" name="Complete" class="CScomplete">Complete</option><option value="Incomplete" name="Incomplete" class="CSincomplete">Incomplete</option><option value="practice" name="practice" class="CSpractice">Needs Practice</option></select><br>
    	 		<label for="CSDate">Date Complete</label>
     		<input id="CSDate" type="date" name="CSDate"><br>
     		<label for="GM">General Merchandise Training</label>
-    		<select name="GM" class="checklistDropDown" id="GM"><option value="Complete" name="Complete" class="GMcomplete">Complete</option><option value="incomplete" name="incomplete" class="GMincomplete">Incomplete</option><option value="practice" name="practice" class="GMpractice">Needs Practice</option></select><br>
+    		<select name="GM" class="checklistDropDown" id="GM"><option value="Complete" name="Complete" class="GMcomplete">Complete</option><option value="Incomplete" name="Incomplete" class="GMincomplete">Incomplete</option><option value="practice" name="practice" class="GMpractice">Needs Practice</option></select><br>
     		<label for="GMDate">Date Complete</label>
     		<input id="GMDate" type="date" name="GMDate"><br>
     		<label for="TextDepart">Text Training</label>
-    		<select name="TextDepart" class="checklistDropDown" id="TextDepart"><option value="Complete" name="Complete" class="TXcomplete">Complete</option><option value="incomplete" name="incomplete" class="TXincomplete">Incomplete</option><option value="practice" name="practice" class="TXpractice">Needs Practice</option></select><br>
+    		<select name="TextDepart" class="checklistDropDown" id="TextDepart"><option value="Complete" name="Complete" class="TXcomplete">Complete</option><option value="Incomplete" name="Incomplete" class="TXincomplete">Incomplete</option><option value="practice" name="practice" class="TXpractice">Needs Practice</option></select><br>
     		<label for="TXDate">Date Complete</label>
     		<input id="TXDate" type="date" name="TXDate"><br>
 
@@ -69,26 +70,6 @@
 <span id="message"></span>
 </div>
 
-
-
-<!-- <div id='wrap'>
-
-        <div id='external-events'>
-            <div id='external-events-listing'>
-                <h4>Draggable Events</h4>
-                <div class='fc-event'>Sara Cashman</div>
-                <div class='fc-event'>Kate Perry</div>
-                <div class='fc-event'>Abby Plummer</div>
-                <div class='fc-event'>Bort</div>
-                <div class='fc-event'>Bookstore Ghost</div>
-            </div>
-            <p>
-                <input type='checkbox' id='drop-remove'  checked='checked'/>
-                <label for='drop-remove'>remove after drop</label>
-            </p>
-        </div> -->
-
-    <!--     <div id='calendar'></div> -->
 
 <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 <script src="app.js"></script>

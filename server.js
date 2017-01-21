@@ -177,6 +177,7 @@ res.end("sent");
 });
 
 exports.app = app;
+exports.NewEmployee = NewEmployee;
 
 app.listen(process.env.PORT || 8080)
 console.log("i always feel like somebody's watching me (on port 8080)")

@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "SET NODE_ENV=dev && node server.js",
+    "test": "mocha test",
   },
   "author": "sara cashman",
   "license": "ISC",
@@ -19,10 +20,5 @@
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "mocha": "^2.4.5"
-  },
-  "scripts": {
-    "start": "SET NODE_ENV=dev && node server.js",
-    "test": "mocha --timeout 10000"
   }
 }
-

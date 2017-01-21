@@ -9,14 +9,17 @@
 
 </head>
 <body>
-	<h2> AllAboard </h2>
+	
+	<header class="head">
+	<h2> AllAboard <i class="fa fa-ship" aria-hidden="true"></i></h2><br>
 	<h4> employee onboarding & management </h4>
+</header>
 	<button class="formtoggle"> Add a new employee </button>
 	<div class="employeeList"></div>
 	<div class="traininglist"></div>
 	
 
-	<div class="formWrapper">
+	<div id="formWrapper" class="form-style-5">
 	<form action="/employees" method="POST" id='addEmployeeForm'>
             <input id="first" type="text" placeholder="First Name" name="first">
             <input id="last" type="text" placeholder="Last Name" name="last"><br>
@@ -61,13 +64,15 @@
 
 
 
+
 <div id="emailcontainer">
-<h1>Mailer In Node.JS</h1>
-<input id="to" type="text" placeholder="Enter E-mail ID where you want to send" />
-<input id="subject" type="text" placeholder="Write Subject" />
-<textarea id="content" cols="40" rows="5" placeholder="Write what you want to send"></textarea>
+<h1 id="messageTitle">New Message</h1>
+<input id="to" type="text" placeholder="Enter E-mail ID" /><br>
+<input id="subject" type="text" placeholder="Subject" /><br>
+<textarea id="content" cols="40" rows="5" placeholder="Message Text"></textarea>
 <button id="sendemail">Send Email</button>
 <span id="message"></span>
+
 </div>
 
 

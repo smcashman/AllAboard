@@ -1,5 +1,6 @@
 * {
 	text-align:center;
+	background-color: #F4F7F8;
 }
 
 .employeeBox {
@@ -9,7 +10,11 @@
 	height:150px;
 }
 
-.formWrapper {
+.employeeList {
+	margin-top:150px;
+}
+
+#formWrapper {
 	display:none;
 }
 .updateButton{
@@ -26,6 +31,13 @@
 
 #emailcontainer{
 	display: none;
+	height:400px;
+	width: 300px;
+	border: solid black 2px;
+	border-radius: 5px;
+	text-align:center;
+	margin: 0 auto;
+
 }
 /*.traininglist {
 	display: none;
@@ -38,43 +50,140 @@ body {
         font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
     }
         
-    #wrap {
-        width: 1100px;
-        margin: 0 auto;
-    }
-        
-    #external-events {
-        float: left;
-        width: 150px;
-        padding: 0 10px;
-        border: 1px solid #ccc;
-        background: #eee;
-        text-align: left;
-    }
-        
-    #external-events h4 {
-        font-size: 16px;
-        margin-top: 0;
-        padding-top: 1em;
-    }
-        
-    #external-events .fc-event {
-        margin: 10px 0;
-        cursor: pointer;
-    }
-        
-    #external-events p {
-        margin: 1.5em 0;
-        font-size: 11px;
-        color: #666;
-    }
-        
-    #external-events p input {
-        margin: 0;
-        vertical-align: middle;
-    }
+/* form styles*/
 
-    #calendar {
-        float: right;
-        width: 100%;
-    }
+.form-style-5{
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-5 form{
+    border: none;
+}
+
+.form-style-5 label {
+    display: block;
+    margin-bottom: 8px;
+}
+.form-style-5 input[type="text"],
+.form-style-5 input[type="date"],
+.form-style-5 textarea,
+.form-style-5 select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    background-color: #e8eeef;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    
+}
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus {
+    background: #d2d9dd;
+}
+.form-style-5 select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
+.form-style-5 .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+button {
+    position: relative;
+    display: block;
+    padding: 15px 39px 14px 39px;
+    color: black;
+    margin: 0 auto;
+    background: #C2EEF0;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 150px;
+    border-radius:25px;
+    border: 1px solid #C4EDF3;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+
+.showChecklist{
+	width:100%;
+}
+
+.head{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height:4.5em;
+	float: right;
+	font-size: 16px;
+	letter-spacing: 0.03em;
+	-webkit-font-smoothing: antialiased;
+	padding-right: 4em;
+	margin-bottom:20px;
+	background-image: url("waves.jpg");
+	z-index: 9999;
+}
+
+.employeeBox{
+	border:2px solid black;
+	border-radius:5px;
+	padding:5px;
+	height:300px;
+}
+
+.formtoggle{
+	margin-top:80px;
+	position: fixed;
+	float:left;
+	top:0;
+}
+
+.head h2, .head h4{
+	float:left;
+	background-color: transparent;
+}
+
+.head h4{
+	padding:2px;
+}
+
+.form-style-5 button:hover
+{
+    background: #109177;
+}
+
+#sendemail {
+	width:100%;
+}
+
+
+

@@ -17,11 +17,24 @@ $(document).ready(function() {
 
 
                     $('.employeeList').on('click', 'div p button.showChecklist', function(e) {
-                    	console.log('ya hear')
+                    	
                         $('.traininglist div p').hide();
                         var idToShow = $(this).parent('p').attr('class')
                         console.log(idToShow)
                         $('.traininglist div p.' + idToShow).show();
+                         var modal = document.getElementById('trainModal');
+							modal.style.display = "block";
+						var span = document.getElementsByClassName("close")[0];
+						// When the user clicks on <span> (x), close the modal
+						span.onclick = function() {
+    						modal.style.display = "none";
+						}
+
+						window.onclick = function(event) {
+    					if (event.target == modal) {
+        				modal.style.display = "none";
+    						}
+								}
 
                     });
 
@@ -44,6 +57,8 @@ $(document).ready(function() {
 
                     });
                     $('.employeeList').on('click', 'div p i.editButton', function(e) {
+						
+ 
                         $(this).parent("p").children('.updateButton').show();
 
                         var first = $(this).parent("p").children("span.firstName").text();
@@ -262,11 +277,24 @@ $(document).ready(function() {
 
 
                     $('.formtoggle').click(function() {
-                        $('#formWrapper').toggle();
-                        $('.trainingChecklist').toggle();
+                        // $('#formWrapper').toggle();
+                        // $('.trainingChecklist').toggle();
+                        var modal = document.getElementById('myModal');
+							modal.style.display = "block";
+						var span = document.getElementsByClassName("close")[0];
+						// When the user clicks on <span> (x), close the modal
+						span.onclick = function() {
+    						modal.style.display = "none";
+						}
+
+						window.onclick = function(event) {
+    					if (event.target == modal) {
+        				modal.style.display = "none";
+    						}
+								}
                     });
 
-
+// email code
                     $('.employeeList').on('click', 'div p i.sendMail', function(e) {
                     	$('.employeeList').hide();
                             $('#emailcontainer').show();

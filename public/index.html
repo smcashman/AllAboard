@@ -14,11 +14,18 @@
 	<h2> AllAboard <i class="fa fa-ship" aria-hidden="true"></i></h2><br>
 	<h4> employee onboarding & management </h4>
 </header>
-	<button class="formtoggle"> Add a new employee </button>
-	<div class="employeeList"></div>
-	<div class="traininglist"></div>
-	
 
+	<button class="formtoggle" id="openAddButton"> Add a new employee </button>
+	<div class="employeeList"></div>
+
+	<div class="trainingModal" id="trainModal">
+		<div id="modalTrain" class="traininglist">
+			<span class="close">&times;</span>
+	</div>	
+	</div>
+	
+	<div id="myModal" class="modal">
+	 <span class="close">&times;</span>
 	<div id="formWrapper" class="form-style-5">
 	<form action="/employees" method="POST" id='addEmployeeForm'>
             <input id="first" type="text" placeholder="First Name" name="first">
@@ -61,6 +68,7 @@
             <button type="submit" id="submitButton" form="addEmployeeForm">Submit</button>
         </form>
     </div>
+</div>
 
 
 

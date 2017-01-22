@@ -8,7 +8,7 @@ $(document).ready(function() {
                     $.each(data, function(index, value) {
 
                     	
-                        $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><br><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><span class="employeeEmail">' + value.email + ' <i class="fa fa-envelope-o sendMail" aria-hidden="true"></i></span><br><span class="employeePhone">' + value.phone + ' </span><br><span class="startdate">' + value.start + ' </span><br><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><button class="showChecklist" id="' + value._id + '">Show Training Checklist</button><button class="updateButton">Update</button></p></div>')
+                        $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><br><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><span class="employeeEmail">' + value.email + ' <i class="fa fa-envelope-o sendMail" aria-hidden="true"></i></span><br><span class="employeePhone">' + value.phone + ' <i class="fa fa-phone" aria-hidden="true"></i></span><br><span class="startdate">' + value.start + ' </span><br><button class="showChecklist" id="' + value._id + '">Training Checklist</button><button class="updateButton">Update</button></p></div>')
 
                         $(".traininglist").append('<div class="checklistBox form-style-5"><p class=' + value._id + ' style="display:none"><button class="updateChecklistButton">Update</button><br><span class="I9"> I9 Complete? ' + value.I9 + ' </span><br><span class="W4"> W4 Complete? ' + value.W4 + ' </span><br><span class="International"> Are they an international student? ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose? ' + value.PayOption + '</span><br><span class="Register">Have they been register trained? ' + value.Register + '</span><br><span class="RegisterDate">' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns? ' + value.Refunds + '</span><br><span class="ReturnsDate">' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service? ' + value.CustServ + '</span><br><span class="CSDate">' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise? ' + value.GM + '</span><br><span class="GMDate">' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks? ' + value.TextDepart + '</span><br><span class="TXDate">' + value.TXDate + '</span><br><button class="submitChecklistButton">Submit Changes</button></p></div></div>')
 
@@ -297,7 +297,14 @@ $(document).ready(function() {
 // email code
                     $('.employeeList').on('click', 'div p i.sendMail', function(e) {
                     	$('.employeeList').hide();
-                            $('#emailcontainer').show();
+                           $('#emailcontainer').show();
+                          var emailspan = document.getElementsByClassName("closeEmail")[0];
+						// When the user clicks on <span> (x), close the modal
+							emailspan.onclick = function() {
+								console.log("OUCH")
+    							$('#emailcontainer').hide();
+    							$('.employeeList').show()
+								}
 
                            to = $(this).parent('span.employeeEmail').text();
                            name = $(this).parent('span.firstName').text();

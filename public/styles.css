@@ -8,8 +8,12 @@
 	max-width:200px;
 	display:inline-block;
 	height:150px;
+	line-height: 2;
 }
 
+.firstName, .lastName{
+	background-color: #a9d6d8;
+}
 .employeeList {
 	margin-top:150px;
 }
@@ -34,6 +38,7 @@
 	border-radius: 5px;
 	text-align:center;
 	margin: 0 auto;
+	margin-top:100px;
 
 }
 /*.traininglist {
@@ -124,11 +129,12 @@ button {
     font-size: 18px;
     text-align: center;
     font-style: normal;
-    width: 150px;
+    width: 130px;
     border-radius:25px;
-    border: 1px solid #C4EDF3;
+    border: 1px solid #40c7ce;
     border-width: 1px 1px 3px;
     margin-bottom: 10px;
+   
 }
 
 .showChecklist{
@@ -159,15 +165,21 @@ button {
 	display:inline-block;
 }
 
+.boat{
+	background-color: transparent;
+}
+
 div.employeeList{
 	height:225px;
 }
 
 .formtoggle{
-	position: fixed;
+	position: absolute;
 	float:right;
 	top:0;
-	right:0;
+	width:180px;
+	height:72px;
+	display: inline-block;
 }
 
 .head h2, .head h4{
@@ -186,6 +198,11 @@ div.employeeList{
 
 #sendemail {
 	width:100%;
+	margin-top:25px;
+}
+
+textarea#content {
+	height:169px;
 }
 
 .modal {
@@ -217,10 +234,16 @@ div.employeeList{
 }
 
 .close:hover,
-.close:focus {
+.close:focus, .closeEmail:hover, .closeEmail:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.closeEmail {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .trainingModal {
@@ -241,6 +264,16 @@ div.employeeList{
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 75%; /* Could be more or less, depending on screen size */
 }
 
+.resourceButton{
+	display: inline-block;
+	position: absolute;
+	float:right;
+	top:0;
+	right:0;
+	width:180px;
+	height:72px;
+	margin-right:100px;
+}

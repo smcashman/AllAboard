@@ -8,9 +8,9 @@ $(document).ready(function() {
                     $.each(data, function(index, value) {
 
                     	
-                        $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><br><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><span class="employeeEmail">' + value.email + ' <i class="fa fa-envelope-o sendMail" aria-hidden="true"></i></span><br><span class="employeePhone">' + value.phone + ' <i class="fa fa-phone" aria-hidden="true"></i></span><br><span class="startdate">' + value.start + ' </span><br><button class="showChecklist" id="' + value._id + '">Training Checklist</button><button class="updateButton">Update</button></p></div>')
+                        $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><br><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><span class="employeeEmail">' + value.email + ' <i class="fa fa-envelope-o sendMail" aria-hidden="true"></i></span><br><span class="employeePhone">' + value.phone + ' <i class="fa fa-phone" aria-hidden="true"></i></span><br><span class="startdate">' + value.start + ' </span><br><button class="showChecklist" id="' + value._id + '">Training Checklist</button><button class="updateButton">Submit</button></p></div>')
 
-                        $(".traininglist").append('<div class="checklistBox form-style-5"><p class=' + value._id + ' style="display:none"><button class="updateChecklistButton">Update</button><br><span class="I9"> I9 Complete? ' + value.I9 + ' </span><br><span class="W4"> W4 Complete? ' + value.W4 + ' </span><br><span class="International"> Are they an international student? ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose? ' + value.PayOption + '</span><br><span class="Register">Have they been register trained? ' + value.Register + '</span><br><span class="RegisterDate">' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns? ' + value.Refunds + '</span><br><span class="ReturnsDate">' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service? ' + value.CustServ + '</span><br><span class="CSDate">' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise? ' + value.GM + '</span><br><span class="GMDate">' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks? ' + value.TextDepart + '</span><br><span class="TXDate">' + value.TXDate + '</span><br><button class="submitChecklistButton">Submit Changes</button></p></div></div>')
+                        $(".traininglist").append('<div class="checklistBox form-style-5"><p class=' + value._id + ' style="display:none"><button class="updateChecklistButton">Update</button><br><span class="I9"> I9 Complete?<br> ' + value.I9 + ' </span><br><span class="W4"> W4 Complete?<br> ' + value.W4 + ' </span><br><span class="International"> Are they an international student?<br> ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose?<br> ' + value.PayOption + '</span><br><span class="Register">Have they been register trained?<br> ' + value.Register + '</span><br><span class="RegisterDate">' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns?<br> ' + value.Refunds + '</span><br><span class="ReturnsDate">' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service?<br> ' + value.CustServ + '</span><br><span class="CSDate">' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise?<br> ' + value.GM + '</span><br><span class="GMDate">' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks?<br> ' + value.TextDepart + '</span><br><span class="TXDate">' + value.TXDate + '</span><br><button class="submitChecklistButton">Submit Changes</button></p></div></div>')
 
 
                     });
@@ -58,7 +58,7 @@ $(document).ready(function() {
                     });
                     $('.employeeList').on('click', 'div p i.editButton', function(e) {
 						
- 
+ 						$(this).parent("p").children('.showChecklist').hide()
                         $(this).parent("p").children('.updateButton').show();
 
                         var first = $(this).parent("p").children("span.firstName").text();
@@ -307,12 +307,12 @@ $(document).ready(function() {
 								}
 
                            to = $(this).parent('span.employeeEmail').text();
-                           name = $(this).parent('span.firstName').text();
+                           name = $(this).parent('div p span.firstName').text();
                            $('input#to').val(to)
                             console.log(to);
                             
                             console.log(name)
-                            $('#messageTitle').text("Message to"+name);
+                            $('#messageTitle').text('Message to'+name);
                             var from, subject, text;
                             $("#sendemail").click(function() {
                             	console.log("mail meh")
@@ -338,6 +338,10 @@ $(document).ready(function() {
                                             });
                                     });
                             });
+
+	$('.resourceButton').click(function(){
+		$('.navMenu').toggle()
+	})
 
 
             });

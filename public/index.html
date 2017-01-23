@@ -4,9 +4,7 @@
 	<meta charset="UTF-8">
 	<title>AllAboard!</title>
 	<link rel='stylesheet' href='styles.css' />
-	<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-
-
+	<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Questrial" rel="stylesheet">
 </head>
 <body>
 	
@@ -15,6 +13,13 @@
 	<h4> employee onboarding & management </h4>
 	<button class="formtoggle" id="openAddButton"> Add a new employee </button>
 	<button class="resourceButton"> Resources </button>
+	<div class="navMenu">
+	<div id="resourceMenu">
+	<a href="https://whentowork.com/" target="blank">When to Work</a><br>
+    <a href="https://www.uscis.gov/i-9" target="blank">I-9 Form and Instructions</a><br>
+    <a href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="blank"> W4 Form and Instructions</a><br>
+	</div>
+</div>
 </header>
 
 	
@@ -23,8 +28,11 @@
 	<div class="trainingModal" id="trainModal">
 		<div id="modalTrain" class="traininglist">
 			<span class="close">&times;</span>
+			<h2> Onboarding Checklist</h2>
 	</div>	
 	</div>
+
+
 	
 	<div id="myModal" class="modal">
 	 <span class="close">&times;</span>
@@ -83,17 +91,12 @@
 <textarea id="content" cols="40" rows="5" placeholder="Message Text"></textarea>
 <button id="sendemail">Send Email</button>
 <span id="message"></span>
-
 </div>
+
 
 
 <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 <script src="app.js"></script>
-<!-- <script src='fullcalendar/lib/jquery.min.js'></script> -->
-<script src="fullcalendar/lib/jquery-ui.min.js"></script>
-<script src='fullcalendar/lib/moment.min.js'></script>
-<script src='fullcalendar/fullcalendar.js'></script>
-<script src="https://use.fontawesome.com/80b61f6b56.js"></script>
-<script type='text/javascript' src='fullcalendar/gcal.js'></script>    
+<script src="https://use.fontawesome.com/80b61f6b56.js"></script>  
 </body>
 </html>

@@ -1,21 +1,27 @@
 * {
 	text-align:center;
 	background-color: #F4F7F8;
+	font-family: 'Questrial', sans-serif;
 }
 
 .employeeBox {
 	border: black 1px solid;
-	max-width:200px;
+	max-width:20em;
 	display:inline-block;
-	height:150px;
+	height:10em;
 	line-height: 2;
+	margin:.5em;
+	box-shadow: 1px 3px 3px;
 }
 
 .firstName, .lastName{
-	background-color: #a9d6d8;
+	font-family: 'Alfa Slab One', serif;
+	margin-top:3em;
+	font-size: 18px;
+
 }
 .employeeList {
-	margin-top:150px;
+	margin-top:8em;
 }
 
 .updateButton{
@@ -25,6 +31,21 @@
 .submitChecklistButton{
 	display: none;
 }
+
+.navMenu{
+	display:inline-block;
+	position: relative;
+	display:none;
+	background: transparent;
+}
+
+#resourceMenu{
+    background-color: #f9f9f9;
+    min-width:10em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    position: relative;
+    display: inline-block;
+}
 /*
 .trainingChecklist{
 	display:none;
@@ -32,13 +53,13 @@
 
 #emailcontainer{
 	display: none;
-	height:400px;
-	width: 300px;
+	height:28em;
+	width: 25em;
 	border: solid black 2px;
 	border-radius: 5px;
 	text-align:center;
 	margin: 0 auto;
-	margin-top:100px;
+	margin-top:10em;
 
 }
 /*.traininglist {
@@ -46,7 +67,7 @@
 }*/
 
 body {
-        margin-top: 40px;
+        margin-top: 8em;
         text-align: center;
         font-size: 14px;
         font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
@@ -55,11 +76,11 @@ body {
 /* form styles*/
 
 .form-style-5{
-    max-width: 500px;
-    padding: 10px 20px;
+    max-width: 35em;
+    padding: 2em 3em;
     background: #f4f7f8;
-    margin: 10px auto;
-    padding: 20px;
+    margin: 2em auto;
+    padding: 2em;
     background: #f4f7f8;
     border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -103,13 +124,13 @@ body {
 }
 .form-style-5 select{
     -webkit-appearance: menulist-button;
-    height:35px;
+    height:2em;
 }
 .form-style-5 .number {
     background: #1abc9c;
     color: #fff;
-    height: 30px;
-    width: 30px;
+    height: 10em;
+    width: 10em;
     display: inline-block;
     font-size: 0.8em;
     margin-right: 4px;
@@ -122,24 +143,25 @@ body {
 button {
     position: relative;
     display: block;
-    padding: 15px 39px 14px 39px;
+    padding: 4px 39px 14px 39px;
     color: black;
     margin: 0 auto;
     background: #C2EEF0;
     font-size: 18px;
     text-align: center;
     font-style: normal;
-    width: 130px;
+    width: 15em;
     border-radius:25px;
     border: 1px solid #40c7ce;
     border-width: 1px 1px 3px;
-    margin-bottom: 10px;
+    margin-bottom: 4em;
    
 }
 
 .showChecklist{
 	width:100%;
 }
+
 
 .head{
 	position: fixed;
@@ -151,7 +173,7 @@ button {
 	letter-spacing: 0.03em;
 	-webkit-font-smoothing: antialiased;
 	padding-right: 4em;
-	margin-bottom:20px;
+	margin-bottom:5em;
 	background-image: url("waves.jpg");
 	z-index: 9999;
 }
@@ -159,10 +181,11 @@ button {
 .employeeBox{
 	border:2px solid black;
 	border-radius:5px;
-	padding:5px;
-	height:225px;
-	width:300px;
+	padding:1em;
+	height:15em;
+	width:20em;
 	display:inline-block;
+
 }
 
 .boat{
@@ -170,15 +193,15 @@ button {
 }
 
 div.employeeList{
-	height:225px;
+	height:16em;
 }
 
 .formtoggle{
-	position: absolute;
+	position: fixed;
 	float:right;
 	top:0;
-	width:180px;
-	height:72px;
+	width:10em;
+	height:4em;
 	display: inline-block;
 }
 
@@ -198,7 +221,7 @@ div.employeeList{
 
 #sendemail {
 	width:100%;
-	margin-top:25px;
+	margin-top:5em;
 }
 
 textarea#content {
@@ -221,7 +244,7 @@ textarea#content {
 #formWrapper{
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 4em;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
@@ -262,18 +285,35 @@ textarea#content {
 #modalTrain {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 4em;
     border: 1px solid #888;
     width: 75%; /* Could be more or less, depending on screen size */
 }
 
 .resourceButton{
 	display: inline-block;
-	position: absolute;
+	position: fixed;
 	float:right;
 	top:0;
 	right:0;
-	width:180px;
-	height:72px;
-	margin-right:100px;
+	width:9em;
+	height:4em;
+	margin-right:3.5em;
 }
+.deleteButton{
+	font-size:24pt;
+	padding-left:5em;
+}
+
+.updateButton{
+	width:100%;
+}
+
+.editButton{
+	padding-right:5em;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+		display:inline-block;
+	}
+

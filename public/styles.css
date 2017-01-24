@@ -20,6 +20,14 @@
 	font-size: 18px;
 
 }
+
+.deleteButton:before{
+	font-size:20pt;
+}
+
+.editButton:before{
+	font-size:20pt;
+}
 .employeeList {
 	margin-top:8em;
 }
@@ -34,7 +42,9 @@
 
 .navMenu{
 	display:inline-block;
-	position: relative;
+	position: absolute;
+	right:9%;
+	top:72px;
 	display:none;
 	background: transparent;
 }
@@ -45,6 +55,8 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     position: relative;
     display: inline-block;
+    padding:1em;
+    line-height: 1.5;
 }
 /*
 .trainingChecklist{
@@ -81,7 +93,6 @@ body {
     background: #f4f7f8;
     margin: 2em auto;
     padding: 2em;
-    background: #f4f7f8;
     border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
 }
@@ -151,21 +162,24 @@ button {
     text-align: center;
     font-style: normal;
     width: 15em;
-    border-radius:25px;
+    border-radius:5px;
     border: 1px solid #40c7ce;
     border-width: 1px 1px 3px;
     margin-bottom: 4em;
+    cursor: pointer;
    
 }
 
 .showChecklist{
 	width:100%;
+	cursor: pointer;
 }
 
 
 .head{
 	position: fixed;
 	top: 0;
+	left:0;
 	width: 100%;
 	height:4.5em;
 	float: right;
@@ -176,6 +190,7 @@ button {
 	margin-bottom:5em;
 	background-image: url("waves.jpg");
 	z-index: 9999;
+	vertical-align: top;
 }
 
 .employeeBox{
@@ -185,8 +200,13 @@ button {
 	height:15em;
 	width:20em;
 	display:inline-block;
-
 }
+
+.employeeBox:hover{
+	box-shadow: none;
+}
+
+
 
 .boat{
 	background-color: transparent;
@@ -196,6 +216,10 @@ div.employeeList{
 	height:16em;
 }
 
+button:hover{
+	background-color: #AAC3C4;
+}
+
 .formtoggle{
 	position: fixed;
 	float:right;
@@ -203,6 +227,11 @@ div.employeeList{
 	width:10em;
 	height:4em;
 	display: inline-block;
+	cursor: pointer;
+}
+
+.formtoggle:hover{
+	background-color: #AAC3C4;
 }
 
 .head h2, .head h4{
@@ -216,7 +245,7 @@ div.employeeList{
 
 .form-style-5 button:hover
 {
-    background: #109177;
+    background: #AAC3C4;
 }
 
 #sendemail {
@@ -226,6 +255,7 @@ div.employeeList{
 
 textarea#content {
 	height:169px;
+	width:96%;
 }
 
 .modal {
@@ -299,10 +329,12 @@ textarea#content {
 	width:9em;
 	height:4em;
 	margin-right:3.5em;
+	cursor: pointer;
 }
 .deleteButton{
 	font-size:24pt;
 	padding-left:5em;
+	cursor: pointer;
 }
 
 .updateButton{
@@ -311,6 +343,7 @@ textarea#content {
 
 .editButton{
 	padding-right:5em;
+	cursor: pointer;
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {

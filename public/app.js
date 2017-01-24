@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 
 
-            $.getJSON("https://localhost:8080/employees", function(data) {
+            $.getJSON("//localhost:8080/employees", function(data) {
 
 
                     $.each(data, function(index, value) {
@@ -44,7 +44,7 @@ $(document).ready(function() {
                         var buttonId = $(this).attr('id');
                         console.log(buttonId)
                         $.ajax({
-                            url: "https://localhost:8080/employees/" + buttonId,
+                            url: "//localhost:8080/employees/" + buttonId,
                             type: "Delete",
                             success: function() {
                                 console.log($('i#' + buttonId).parent('p').parent('div'));
@@ -95,7 +95,7 @@ $(document).ready(function() {
                             console.log(updateObject);
 
                             $.ajax({
-                                url: "https://localhost:8080/employees/" + buttonClassUpdate,
+                                url: "//localhost:8080/employees/" + buttonClassUpdate,
                                 type: "PUT",
                                 data: updateObject,
                                 success: function() {
@@ -256,7 +256,7 @@ $(document).ready(function() {
                             console.log(updateObject);
 
                             $.ajax({
-                                url: "https://localhost:8080/employees/" + buttonClassUpdate,
+                                url: "//localhost:8080/employees/" + buttonClassUpdate,
                                 type: "PUT",
                                 data: updateObject,
                                 success: function() {
@@ -321,7 +321,7 @@ $(document).ready(function() {
                                     subject = $("#subject").val();
                                     text = $("#content").val();
                                     $("#message").text("Sending E-mail...Please wait");
-                                    $.get("https://localhost:8080/send", {
+                                    $.get("//localhost:8080/send", {
                                             to: to,
                                             subject: subject,
                                             text: text

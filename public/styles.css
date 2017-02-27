@@ -221,13 +221,24 @@ button:hover{
 }
 
 .formtoggle{
-	position: fixed;
 	float:right;
 	top:0;
 	width:10em;
-	height:4em;
+	height:3em;
 	display: inline-block;
 	cursor: pointer;
+    z-index: 1;
+}
+
+.resourceButton{
+    display: inline-block;
+    float:right;
+    top:0;
+    width:9em;
+    height:3em;
+    margin-right:3.5em;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .formtoggle:hover{
@@ -320,17 +331,6 @@ textarea#content {
     width: 75%; /* Could be more or less, depending on screen size */
 }
 
-.resourceButton{
-	display: inline-block;
-	position: fixed;
-	float:right;
-	top:0;
-	right:0;
-	width:9em;
-	height:4em;
-	margin-right:3.5em;
-	cursor: pointer;
-}
 .deleteButton{
 	font-size:24pt;
 	padding-left:5em;
@@ -346,7 +346,27 @@ textarea#content {
 	cursor: pointer;
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+@media only screen and (min-device-width : 320px) and (max-device-width : 780px) {
+    body{
 		display:inline-block;
+        horizontal-align:0;
+    }
+    .resourceButton, .formtoggle{
+        border-left:1px solid black;
+        background-color: transparent;
+        margin:0;
+        padding:0;
+        display:block;
+        top:0;
+       margin-right:.5em;
+        font-size: 12pt;
+    }
+
+    .hideMobile{
+        display:none;
+    }
+
 	}
+
+
 

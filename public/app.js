@@ -57,7 +57,8 @@ $(document).ready(function() {
 
                     });
                     $('.employeeList').on('click', 'div p i.editButton', function(e) {
-						
+
+						$(this).hide();
  						$(this).parent("p").children('.showChecklist').hide()
                         $(this).parent("p").children('.updateButton').show();
 
@@ -70,10 +71,12 @@ $(document).ready(function() {
                         var phone = $(this).parent("p").children("span.employeePhone").text();
                         $(this).parent("p").children('span.employeePhone').html("<input id='editPhone' name='editPhone' type='text' value='" + phone + "'>")
                         var start = $(this).parent("p").children("span.startdate").text();
-                        $(this).parent("p").children('span.startdate').html("<input id='editStartDate' name='editStartDate' type='text' value='" + start + "'>")
+                        $(this).parent("p").children('span.startdate').html("<input id='editStartDate' name='editStartDate' type='date' value='" + start + "'>")
 
 
                         $('.updateButton').click(function() {
+                             $(this).parent("p").children('.showChecklist').show()
+                                    $(this).parent("p").children('.updateButton').hide();
                         	console.log("CLERCKED")
                             var buttonClassUpdate = $(this).parent('p').attr('class')
                             var editedFirst = $('p.' + buttonClassUpdate).children('span').children('input#editName').val();
@@ -94,25 +97,28 @@ $(document).ready(function() {
 
                             console.log(updateObject);
 
+                           
+
                             $.ajax({
                                 url: "/employees/" + buttonClassUpdate,
                                 type: "PUT",
                                 data: updateObject,
                                 success: function() {
-
-                                    console.log(buttonClassUpdate);
-
+                                    window.location.reload();
                                 }
 
 
                             });
+                            
                         });
 
                     });
 
 
 				$('.updateChecklistButton').click(function(){
+                    $(this).hide();
 					$('.submitChecklistButton').show()
+
 
                         var i9 = $(this).parent("p").children("span.I9").text();
                         
@@ -262,6 +268,7 @@ $(document).ready(function() {
                                 success: function() {
 
                                     console.log(buttonClassUpdate);
+
 
                                 }
 

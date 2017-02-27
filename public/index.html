@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<title>AllAboard!</title>
 	<link rel='stylesheet' href='styles.css' />
 	<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Questrial" rel="stylesheet">
+    <link href="https://use.fontawesome.com/80b61f6b56.css" media="all" rel="stylesheet">
 </head>
 <body>
 	
 	<header class="head">
-	<h2> AllAboard <i class="fa fa-ship boat" aria-hidden="true"></i></h2><br>
-	<h4> employee onboarding & management </h4>
-	<button class="formtoggle" id="openAddButton"> Add a new employee </button>
+	<h2 class="hideMobile"> AllAboard <i class="fa fa-ship boat" aria-hidden="true"></i></h2><br>
+	<h4 class="hideMobile"> employee onboarding & management </h4>
 	<button class="resourceButton"> Resources </button>
+    <button class="formtoggle" id="openAddButton"> Add a new employee </button>
 	<div class="navMenu">
 	<div id="resourceMenu">
 	<a href="https://whentowork.com/" target="blank">When to Work</a><br>
@@ -38,9 +40,9 @@
 	 <span class="close">&times;</span>
 	<div id="formWrapper" class="form-style-5">
 	<form action="/employees" method="POST" id='addEmployeeForm'>
-            <input id="first" type="text" placeholder="First Name" name="first">
-            <input id="last" type="text" placeholder="Last Name" name="last"><br>
-       		<input id="email" type="text" placeholder="Email" name="email"><br>
+            <input id="first" type="text" placeholder="First Name" name="first" required>
+            <input id="last" type="text" placeholder="Last Name" name="last" required><br>
+       		<input id="email" type="text" placeholder="Email" name="email" required><br>
        		<input id="phone" type="text" placeholder="Phone" name="phone"><br>
        		<label for="start">Start Date</label>
        		<input id="start" type="date" name="start"><br>
@@ -97,6 +99,6 @@
 
 <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 <script src="app.js"></script>
-<script src="https://use.fontawesome.com/80b61f6b56.js"></script>  
+ 
 </body>
 </html>

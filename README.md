@@ -19,7 +19,7 @@ You can access a working prototype here: (http://frozen-cliffs-63668.herokuapp.c
 ## Technical
 
 The backend of this app uses NodeJS with ExpressJS for the server and MongoDB (with Mongoose) as the database. 
-The email function is powered by NodeMailer
+The email function is powered by NodeMailer. 
 The API has an endpoint to return all employees currently listed and an endpoint to return a specific employee.
 
 ## Authors

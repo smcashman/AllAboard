@@ -85,7 +85,7 @@ $(document).ready(function() {
                             var editedPhone = $('p.' + buttonClassUpdate).children('span').children('input#editPhone').val();
                             var editedStart = $('p.' + buttonClassUpdate).children('span').children('input#editStartDate').val();
 
-
+                             $(this).parent('p').html('<i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + buttonClassUpdate + '"></i><br><span class="firstName">' + editedFirst + ' </span><span class="lastName">' + editedLast + ' </span><br><span class="employeeEmail">' + editedEmail + ' <i class="fa fa-envelope-o sendMail" aria-hidden="true"></i></span><br><span class="employeePhone">' + editedPhone + ' <i class="fa fa-phone" aria-hidden="true"></i></span><br><span class="startdate">' + editedStart + ' </span><br><button class="showChecklist" id="' + buttonClassUpdate + '">Training Checklist</button><button class="updateButton">Submit</button>');
 
                             var updateObject = new Object();
                             updateObject._id = buttonClassUpdate;
@@ -104,7 +104,7 @@ $(document).ready(function() {
                                 type: "PUT",
                                 data: updateObject,
                                 success: function() {
-                                    window.location.reload();
+                                    // window.location.reload();
                                 }
 
 

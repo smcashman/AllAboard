@@ -24,7 +24,7 @@
 </div>
 </header>
 
-	
+	<p id="blurb"> Welcome to AllAboard, your employee on-boarding tracker! Click on the pencil on the bottom left of any employee's card to edit their information. Click on the trash can on the bottom right to delete that employee. Click on the envelope next to any employee's email address to quickly send them an email. Click on "add new employee" to add a new employee to the list. Click on "Resources" in the top right to find links to the employee scheduler and the essential federal W-4 and I-9 forms. </p>
 	<div class="employeeList"></div>
 
 	<div class="trainingModal" id="trainModal">
@@ -40,9 +40,13 @@
 	 <span class="close">&times;</span>
 	<div id="formWrapper" class="form-style-5">
 	<form action="/employees" method="POST" id='addEmployeeForm'>
+            <label for="first"> First Name </label>
             <input id="first" type="text" placeholder="First Name" name="first" required>
+            <label for="last"> Last Name </label>
             <input id="last" type="text" placeholder="Last Name" name="last" required><br>
+            <label for="email"> Email Address </label>
        		<input id="email" type="text" placeholder="Email" name="email" required><br>
+            <label for="phone"> Phone Number</label>
        		<input id="phone" type="text" placeholder="Phone" name="phone"><br>
        		<label for="start">Start Date</label>
        		<input id="start" type="date" name="start"><br>

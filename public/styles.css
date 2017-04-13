@@ -1,5 +1,5 @@
 * {
-	text-align:center;
+	/*text-align:center;*/
 	background-color: #F4F7F8;
 	font-family: 'Questrial', sans-serif;
 }
@@ -29,7 +29,7 @@
 	font-size:20pt;
 }
 .employeeList {
-	margin-top:8em;
+	margin-top:4em;
 }
 
 .updateButton{
@@ -62,6 +62,14 @@
 .trainingChecklist{
 	display:none;
 }*/
+
+.checklistBox{
+    text-align: left;
+}
+
+.I9{
+    margin-bottom:5px;
+}
 
 #emailcontainer{
 	display: none;
@@ -154,25 +162,33 @@ body {
 button {
     position: relative;
     display: block;
-    padding: 4px 39px 14px 39px;
+    padding: 4px 39px 4px 39px;
     color: black;
     margin: 0 auto;
-    background: #C2EEF0;
+    background: #659cf2;
     font-size: 18px;
     text-align: center;
     font-style: normal;
     width: 15em;
     border-radius:5px;
-    border: 1px solid #40c7ce;
+    border: 1px solid #2e4c7c;
     border-width: 1px 1px 3px;
     margin-bottom: 4em;
     cursor: pointer;
    
 }
 
+#blurb{
+    width:80%;
+    font-size:14pt;
+    margin:0 auto;
+    text-align: left;
+}
+
 .showChecklist{
-	width:100%;
+	width:65%;
 	cursor: pointer;
+    background-color: #c6d8f2;
 }
 
 
@@ -188,7 +204,7 @@ button {
 	-webkit-font-smoothing: antialiased;
 	padding-right: 4em;
 	margin-bottom:5em;
-	background-image: url("waves.jpg");
+	background-color: #a2aec1;
 	z-index: 9999;
 	vertical-align: top;
 }
@@ -196,8 +212,8 @@ button {
 .employeeBox{
 	border:2px solid black;
 	border-radius:5px;
-	padding:1em;
-	height:15em;
+	/*padding:1em;*/
+	height:18em;
 	width:20em;
 	display:inline-block;
 }
@@ -217,7 +233,7 @@ div.employeeList{
 }
 
 button:hover{
-	background-color: #AAC3C4;
+	background-color: #c9dae0;
 }
 
 .formtoggle{
@@ -239,10 +255,15 @@ button:hover{
     margin-right:3.5em;
     cursor: pointer;
     z-index: 1;
+    background-color: #c6d8f2;
+}
+
+.resourceButton:hover{
+    background-color: #c9dae0;
 }
 
 .formtoggle:hover{
-	background-color: #AAC3C4;
+	background-color: #a2aec1;
 }
 
 .head h2, .head h4{
@@ -256,14 +277,21 @@ button:hover{
 
 .form-style-5 button:hover
 {
-    background: #AAC3C4;
+    background: #a2aec1;
 }
 
 #sendemail {
 	width:100%;
 	margin-top:5em;
 }
+ i.sendMail:hover{
+    cursor:pointer;
+    font-size: 14pt;
+ }
 
+i.editButton:hover, i.deleteButton:hover{
+    color: #2e4c7c;
+}
 textarea#content {
 	height:169px;
 	width:96%;
@@ -288,6 +316,11 @@ textarea#content {
     padding: 4em;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    text-align: left;
+}
+
+#addEmployeeForm{
+    text-align: left;
 }
 
 .close {

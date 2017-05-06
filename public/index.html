@@ -40,15 +40,15 @@
 	 <span class="close">&times;</span>
 	<div id="formWrapper" class="form-style-5">
 	<form action="/employees" method="POST" id='addEmployeeForm'>
-            <label for="first"> First Name </label>
+            <label for="first"> First Name *</label>
             <input id="first" type="text" placeholder="First Name" name="first" required>
-            <label for="last"> Last Name </label>
+            <label for="last"> Last Name *</label>
             <input id="last" type="text" placeholder="Last Name" name="last" required><br>
-            <label for="email"> Email Address </label>
-       		<input id="email" type="text" placeholder="Email" name="email" required><br>
+            <label for="email"> Email Address *</label>
+       		<input id="email" type="text" placeholder="EmployeeEmail@address.com" name="email" required><br>
             <label for="phone"> Phone Number</label>
-       		<input id="phone" type="text" placeholder="Phone" name="phone"><br>
-       		<label for="start">Start Date</label>
+       		<input id="phone" type="text" placeholder="617-373-2000" name="phone"><br>
+       		<label for="start" required>Start Date *</label>
        		<input id="start" type="date" name="start"><br>
        		<form action="/traininglist" method="POST" id="training">
 			<label for="I9">I-9 form complete?</label>
@@ -60,25 +60,35 @@
     		<label for="PayOption">Pay Method</label>
     		<select name="PayOption" class="checklistDropDown" id="PayOption"><option value="PayCard" name="PayCard" class="paycard">Paycard</option><option value="Direct Deposit" name="Direct Deposit" class="directdep">Direct Deposit</option></select><br>
     		<label for="Register">Register Training</label>
-    		<select name="Register" class="checklistDropDown" id="Register"><option value="Complete" name="Complete" class="RegTrcomplete">Complete</option><option value="Incomplete" name="Incomplete" class="trincomplete">Incomplete</option><option value="Needs Practice" name="Needs Practice" class="trpractice">Needs Practice</option></select><br>
+    		<select name="Register" class="checklistDropDown" id="Register"><option value="Incomplete" name="Incomplete" class="trincomplete">Incomplete</option><option value="Complete" name="Complete" class="RegTrcomplete">Complete</option><option value="Needs Practice" name="Needs Practice" class="trpractice">Needs Practice</option></select><br>
+            <div id="registerDateWrapper">
     		<label for="RegisterDate">Date Complete</label>
     		<input id="RegisterDate" type="date" name="RegisterDate"><br>
+            </div>
     		<label for="Refunds">Returns Training</label>
-    		<select name="Refunds" class="checklistDropDown" id="Refunds"><option value="Complete" name="Complete" class="Refundscomplete">Complete</option><option value="Incomplete" name="Incomplete" class="refundsincomplete">Incomplete</option><option value="Needs Practice" name="Needs Practice" class="refundspractice">Needs Practice</option></select><br>
+    		<select name="Refunds" class="checklistDropDown" id="Refunds"><option value="Incomplete" name="Incomplete" class="refundsincomplete">Incomplete</option><option value="Complete" name="Complete" class="Refundscomplete">Complete</option><option value="Needs Practice" name="Needs Practice" class="refundspractice">Needs Practice</option></select><br>
+            <div id="returnsDateWrapper">
     		<label for="ReturnsDate">Date Complete</label>
     		<input id="ReturnsDate" type="date" name="ReturnsDate"><br>
+            </div>
     		<label for="CustServ">Customer Service Training</label>
-    		<select name="CustServ" class="checklistDropDown" id="CustServ"><option value="Complete" name="Complete" class="CScomplete">Complete</option><option value="Incomplete" name="Incomplete" class="CSincomplete">Incomplete</option><option value="Needs Practice" name="Needs Practice" class="CSpractice">Needs Practice</option></select><br>
+    		<select name="CustServ" class="checklistDropDown" id="CustServ"><option value="Incomplete" name="Incomplete" class="CSincomplete">Incomplete</option><option value="Complete" name="Complete" class="CScomplete">Complete</option><option value="Needs Practice" name="Needs Practice" class="CSpractice">Needs Practice</option></select><br>
+            <div id="csDateWrapper">
    	 		<label for="CSDate">Date Complete</label>
     		<input id="CSDate" type="date" name="CSDate"><br>
+            </div>
     		<label for="GM">General Merchandise Training</label>
-    		<select name="GM" class="checklistDropDown" id="GM"><option value="Complete" name="Complete" class="GMcomplete">Complete</option><option value="Incomplete" name="Incomplete" class="GMincomplete">Incomplete</option><option value="Needs Practice" name="Needs Practice" class="GMpractice">Needs Practice</option></select><br>
+    		<select name="GM" class="checklistDropDown" id="GM"><option value="Incomplete" name="Incomplete" class="GMincomplete">Incomplete</option><option value="Complete" name="Complete" class="GMcomplete">Complete</option><option value="Needs Practice" name="Needs Practice" class="GMpractice">Needs Practice</option></select><br>
+            <div id="gmDateWrapper">
     		<label for="GMDate">Date Complete</label>
     		<input id="GMDate" type="date" name="GMDate"><br>
+            </div>
     		<label for="TextDepart">Text Training</label>
-    		<select name="TextDepart" class="checklistDropDown" id="TextDepart"><option value="Complete" name="Complete" class="TXcomplete">Complete</option><option value="Incomplete" name="Incomplete" class="TXincomplete">Incomplete</option><option value="Needs Practice" name="Needs Practice" class="TXpractice">Needs Practice</option></select><br>
+    		<select name="TextDepart" class="checklistDropDown" id="TextDepart"><option value="Incomplete" name="Incomplete" class="TXincomplete">Incomplete</option><option value="Complete" name="Complete" class="TXcomplete">Complete</option><option value="Needs Practice" name="Needs Practice" class="TXpractice">Needs Practice</option></select><br>
+            <div id="txDateWrapper">
     		<label for="TXDate">Date Complete</label>
     		<input id="TXDate" type="date" name="TXDate"><br>
+            </div>
 
          
             <button type="submit" id="submitButton" form="addEmployeeForm">Submit</button>

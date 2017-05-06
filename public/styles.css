@@ -3,6 +3,31 @@
 	background-color: #F4F7F8;
 	font-family: 'Questrial', sans-serif;
 }
+/*form styles*/
+input{
+    height:44px;
+}
+
+input#phone {
+    width:300px;
+}
+input#start, input#RegisterDate, input#ReturnsDate, input#CSDate, input#GMDate, input#TXDate {
+    width:200px;
+}
+
+select#I9, select#W4, select#International {
+    width:150px;
+}
+
+select#PayOption, select#Register, select#Refunds, select#CustServ, select#GM, select#TextDepart {
+    width:200px;
+}
+
+#registerDateWrapper, #returnsDateWrapper, #csDateWrapper, #gmDateWrapper, #txDateWrapper{
+    display:none;
+}
+
+
 
 .employeeBox {
 	border: black 1px solid;
@@ -71,6 +96,22 @@
     margin-bottom:5px;
 }
 
+#i9header{
+    font-weight: bold;
+}
+
+#editi9, #editw4, #editPay, #editRegister, #editreturns, {
+    width:200px;
+}
+
+select#editintl{
+    width:80px;
+}
+
+#RegDateWrapper, #RefDateWrapper, #csDateWrapper, #gmDateWrapper, #txDateWrapper{
+    display:none;
+}
+
 #emailcontainer{
 	display: none;
 	height:28em;
@@ -82,9 +123,9 @@
 	margin-top:10em;
 
 }
-/*.traininglist {
-	display: none;
-}*/
+.traininglist {
+	font-size:14pt;
+}
 
 body {
         margin-top: 8em;
@@ -124,7 +165,7 @@ body {
     margin: 0;
     outline: 0;
     padding: 7px;
-    width: 100%;
+    /*width: 100%;*/
     box-sizing: border-box; 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box; 
@@ -323,6 +364,7 @@ textarea#content {
 
 #addEmployeeForm{
     text-align: left;
+    font-size: 16pt;
 }
 
 .close {

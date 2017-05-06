@@ -10,7 +10,7 @@ $(document).ready(function() {
                     	
                         $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><br><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><i class="fa fa-envelope-o sendMail" aria-hidden="true"></i><span class="employeeEmail"> ' + value.email + ' </span><br><i class="fa fa-phone" aria-hidden="true"></i><span class="employeePhone"> ' + value.phone + ' </span><br><span class="startdate">' + value.start + ' </span><br><i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><button class="showChecklist" id="' + value._id + '">Training Checklist</button><button class="updateButton">Submit</button></p></div>')
 
-                        $(".traininglist").append('<div class="checklistBox form-style-5"><p class=' + value._id + ' style="display:none"><br><span class="I9">I9 Complete?<br> ' + value.I9 + ' </span><br><span class="W4"> W4 Complete?<br> ' + value.W4 + ' </span><br><span class="International"> Are they an international student?<br> ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose?<br> ' + value.PayOption + '</span><br><span class="Register">Have they been register trained?<br> ' + value.Register + '</span><br><span class="RegisterDate">' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns?<br> ' + value.Refunds + '</span><br><span class="ReturnsDate">' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service?<br> ' + value.CustServ + '</span><br><span class="CSDate">' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise?<br> ' + value.GM + '</span><br><span class="GMDate">' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks?<br> ' + value.TextDepart + '</span><br><span class="TXDate">' + value.TXDate + '</span><br><button class="updateChecklistButton">Update</button><button class="submitChecklistButton">Submit Changes</button></p></div></div>')
+                        $(".traininglist").append('<div class="checklistBox form-style-5"><p class=' + value._id + ' style="display:none"><br><span class="I9"><span id="i9header">I9 Complete?</span><br> ' + value.I9 + ' </span><br><span class="W4"> W4 Complete?<br> ' + value.W4 + ' </span><br><span class="International"> Are they an international student?<br> ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose?<br> ' + value.PayOption + '</span><br><span class="Register">Have they been register trained?<br> ' + value.Register + '</span><br><span class="RegisterDate">' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns?<br> ' + value.Refunds + '</span><br><span class="ReturnsDate">' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service?<br> ' + value.CustServ + '</span><br><span class="CSDate">' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise?<br> ' + value.GM + '</span><br><span class="GMDate">' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks?<br> ' + value.TextDepart + '</span><br><span class="TXDate">' + value.TXDate + '</span><br><button class="updateChecklistButton">Update</button><button class="submitChecklistButton">Submit Changes</button></p></div></div>')
 
 
                     });
@@ -166,9 +166,15 @@ $(document).ready(function() {
                     	$(this).parent("p").children('span.Register').html('<label for="editRegister">Register Training</label><select name="editRegister" class="checklistDropDown" id="editRegister"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected >Needs Practice</option></select><br>')
                     }
 
+                        $('#editRegister').change(function(){
+                            $('#RegDateWrapper').show();
+                        });
+
                         var regDate = $(this).parent("p").children("span.RegisterDate").text();
 
-                        $(this).parent("p").children('span.RegisterDate').html("<input id='editRegDate' name='editRegDate' type='date' value='" + regDate + "'>")
+                        $(this).parent("p").children('span.RegisterDate').html("<div id='RegDateWrapper'><label for='editRegDate'>Updated Training Date</label><input id='editRegDate' name='editRegDate' type='date' value='" + regDate + "'></div>")
+
+
 
                         var refunds = $(this).parent("p").children("span.Refunds").text();
                         console.log(refunds)
@@ -180,8 +186,12 @@ $(document).ready(function() {
                     		 $(this).parent("p").children('span.Refunds').html('<label for="editreturns">Returns Training</label><select name="editreturns" class="checklistDropDown" id="editreturns"><option value="Complete" name="Complete" >Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected>Needs Practice</option></select><br>')
                     	}
 
+                        $('#editreturns').change(function(){
+                            $('#RefDateWrapper').show();
+                        });
+
                         var refundsDate = $(this).parent("p").children("span.ReturnsDate").text();
-                        $(this).parent("p").children('span.ReturnsDate').html("<input id='editRefDate' name='editRefDate' type='date' value='" + refundsDate + "'>")
+                        $(this).parent("p").children('span.ReturnsDate').html("<div id='RefDateWrapper'><label for='editRefDate'>Updated Training Date</label><input id='editRefDate' name='editRefDate' type='date' value='" + refundsDate + "'></div>")
 
                         var custoserv = $(this).parent("p").children("span.CustServ").text();
                         
@@ -193,8 +203,12 @@ $(document).ready(function() {
                     	$(this).parent("p").children('span.CustServ').html('<label for="editCS">Customer Service Training</label><select name="editCS" class="checklistDropDown" id="editCS"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected>Needs Practice</option></select><br>')
                     }
 
+                    $('#editCS').change(function(){
+                            $('#csDateWrapper').show();
+                        });
+
                         var custservDate = $(this).parent("p").children("span.CSDate").text();
-                        $(this).parent("p").children('span.CSDate').html("<input id='editCSdate' name='editCSdate' type='date' value='" + custservDate + "'>")
+                        $(this).parent("p").children('span.CSDate').html("<div id='csDateWrapper'><label for='editCSdate'>Updated Training Date</label><input id='editCSdate' name='editCSdate' type='date' value='" + custservDate + "'></div>")
 
                         var genmerch = $(this).parent("p").children("span.GM").text();
                        
@@ -206,8 +220,12 @@ $(document).ready(function() {
                     	 $(this).parent("p").children('span.GM').html('<label for="editGM">General Merchandise Training</label><select name="editGM" class="checklistDropDown" id="editGM"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected>Needs Practice</option></select><br>')
                     }
 
+                     $('#editGM').change(function(){
+                            $('#gmDateWrapper').show();
+                        });
+
                         var genmerchdate = $(this).parent("p").children("span.GMDate").text();
-                        $(this).parent("p").children('span.GMDate').html("<input id='editGMDate' name='editGMDate' type='date' value='" + genmerchdate + "'>")
+                        $(this).parent("p").children('span.GMDate').html("<div id='gmDateWrapper'><label for='editGMdate'>Updated Training Date</label><input id='editGMDate' name='editGMDate' type='date' value='" + genmerchdate + "'></div>")
 
                         var txt = $(this).parent("p").children("span.TextDepart").text();
                         console.log(txt)
@@ -218,9 +236,12 @@ $(document).ready(function() {
                     } else {
                     		$(this).parent("p").children('span.TextDepart').html('<label for="editTX">Text Training</label><select name="editTX" class="checklistDropDown" id="editTX"><option value="Complete" name="Complete">Complete</option><option value="incomplete" name="incomplete">Incomplete</option><option value="practice" name="practice" selected>Needs Practice</option></select><br>')
                     }
+                         $('#editTX').change(function(){
+                            $('#txDateWrapper').show();
+                        });
 
                         var txtDate = $(this).parent("p").children("span.TXDate").text();
-                        $(this).parent("p").children('span.TXDate').html("<input id='editTXdate' name='editTXdate' type='date' value='" + txtDate + "'>")
+                        $(this).parent("p").children('span.TXDate').html("<div id='txDateWrapper'><label for='editTXdate'>Updated Training Date</label><input id='editTXdate' name='editTXdate' type='date' value='" + txtDate + "'></div>")
                       
 
                         $('.submitChecklistButton').click(function() {
@@ -299,6 +320,42 @@ $(document).ready(function() {
         				modal.style.display = "none";
     						}
 								}
+                    });
+// form change controls
+                    $('#Register').change(function(){
+                        if ($("#Register").val() === "Complete"){
+                            $('#registerDateWrapper').show();
+                        } else{
+                            $('#registerDateWrapper').hide();
+                        }
+                    });
+                    $('#Refunds').change(function(){
+                        if ($("#Refunds").val() === "Complete"){
+                            $('#returnsDateWrapper').show();
+                        } else{
+                            $('#returnsDateWrapper').hide();
+                        }
+                    });
+                    $('#CustServ').change(function(){
+                        if ($("#CustServ").val() === "Complete"){
+                            $('#csDateWrapper').show();
+                        } else{
+                            $('#csDateWrapper').hide();
+                        }
+                    });
+                    $('#GM').change(function(){
+                        if ($("#GM").val() === "Complete"){
+                            $('#gmDateWrapper').show();
+                        } else{
+                            $('#gmDateWrapper').hide();
+                        }
+                    });
+                    $('#TextDepart').change(function(){
+                        if ($("#TextDepart").val() === "Complete"){
+                            $('#txDateWrapper').show();
+                        } else{
+                            $('#txDateWrapper').hide();
+                        }
                     });
 
 // email code

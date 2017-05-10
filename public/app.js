@@ -1,6 +1,22 @@
 $(document).ready(function() {
 
+                        var modal = document.getElementById('homepageModal');
+                            modal.style.display = "block";
+                        $('#showDemo').click(function() {
+                            $('.head').show();
+                            modal.style.display = "none";
+                        });
 
+                        $('#demoButtonTop').click(function() {
+                            $('.head').show();
+                            modal.style.display = "none";
+                        });
+
+                        window.onclick = function(event) {
+                        if (event.target == modal) {
+                        modal.style.display = "none";
+                            }
+                                }
 
             $.getJSON("/employees", function(data) {
 
@@ -8,10 +24,11 @@ $(document).ready(function() {
                     $.each(data, function(index, value) {
 
                     	
-                        $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><br><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><i class="fa fa-envelope-o sendMail" aria-hidden="true"></i><span class="employeeEmail"> ' + value.email + ' </span><br><i class="fa fa-phone" aria-hidden="true"></i><span class="employeePhone"> ' + value.phone + ' </span><br><span class="startdate">' + value.start + ' </span><br><i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><button class="showChecklist" id="' + value._id + '">Training Checklist</button><button class="updateButton">Submit</button></p></div>')
+                        $(".employeeList").append('<div class="employeeBox"><p class=' + value._id + '><br><span class="firstName">' + value.first + ' </span><span class="lastName">' + value.last + ' </span><br><i class="fa fa-envelope-o sendMail" aria-hidden="true"></i><span class="employeeEmail"> ' + value.email + ' </span><br><i class="fa fa-phone" aria-hidden="true"></i><span class="employeePhone"> ' + value.phone + ' </span><br><span class="startdate">' + value.start + ' </span><br><i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true" id="' + value._id + '"></i><span class="exeuntButton">Cancel</span><button class="showChecklist" id="' + value._id + '">Training Checklist</button><button class="updateButton">Submit</button></p></div>')
 
-                        $(".traininglist").append('<div class="checklistBox form-style-5"><p class=' + value._id + ' style="display:none"><br><span class="I9"><span id="i9header">I9 Complete?</span><br> ' + value.I9 + ' </span><br><span class="W4"> W4 Complete?<br> ' + value.W4 + ' </span><br><span class="International"> Are they an international student?<br> ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose?<br> ' + value.PayOption + '</span><br><span class="Register">Have they been register trained?<br> ' + value.Register + '</span><br><span class="RegisterDate">' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns?<br> ' + value.Refunds + '</span><br><span class="ReturnsDate">' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service?<br> ' + value.CustServ + '</span><br><span class="CSDate">' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise?<br> ' + value.GM + '</span><br><span class="GMDate">' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks?<br> ' + value.TextDepart + '</span><br><span class="TXDate">' + value.TXDate + '</span><br><button class="updateChecklistButton">Update</button><button class="submitChecklistButton">Submit Changes</button></p></div></div>')
+                        $(".traininglist").append('<div class="checklistBox form-style-5"><p class=' + value._id + ' style="display:none"><br><span class="I9"><span id="i9header">I9 Complete?</span><br> ' + value.I9 + ' </span><br><span class="W4"> W4 Complete?<span id="W4answer"><br> ' + value.W4 + ' </span></span><br><span class="International"> Are they an international student?<br> ' + value.International + '</span><br><span class="PayOption"> Which pay option did they choose?<br> ' + value.PayOption + '</span><br><span class="Register">Have they been register trained?<br> ' + value.Register + '</span><br><span class="RegisterDate">When?<br>' + value.RegisterDate + '</span><br><span class="Refunds"> Have they been trained on returns?<br> ' + value.Refunds + '</span><br><span class="ReturnsDate">When?<br>' + value.ReturnsDate + '</span><br><span class="CustServ">Have they been trained on customer service?<br> ' + value.CustServ + '</span><br><span class="CSDate">When?<br>' + value.CSDate + '</span><br><span class="GM">Have they been trained on general merchandise?<br> ' + value.GM + '</span><br><span class="GMDate">When?<br>' + value.GMDate + '</span><br><span class="TextDepart"> Have they been trained in textbooks?<br> ' + value.TextDepart + '</span><br><span class="TXDate">When?<br>' + value.TXDate + '</span><br><button class="updateChecklistButton">Update</button><button class="submitChecklistButton">Submit Changes</button></p></div></div>')
 
+                
 
                     });
 
@@ -56,9 +73,13 @@ $(document).ready(function() {
                         })
 
                     });
+
+
+
                     $('.employeeList').on('click', 'div p i.editButton', function(e) {
 
 						$(this).hide();
+                        $(this).parent("p").children('.exeuntButton').show();
  						$(this).parent("p").children('.showChecklist').hide()
                         $(this).parent("p").children('.updateButton').show();
 
@@ -72,6 +93,13 @@ $(document).ready(function() {
                         $(this).parent("p").children('span.employeePhone').html("<input id='editPhone' name='editPhone' type='text' value='" + phone + "'>")
                         var start = $(this).parent("p").children("span.startdate").text();
                         $(this).parent("p").children('span.startdate').html("<input id='editStartDate' name='editStartDate' type='date' value='" + start + "'>")
+
+
+                        $('.exeuntButton').click(function(){
+                            console.log(this)
+                         $(this).parent('p').html('<br><span class="firstName">' + first + ' </span><span class="lastName">' + last + ' </span><br><span class="employeeEmail">' + email + ' <i class="fa fa-envelope-o sendMail" aria-hidden="true"></i></span><br><span class="employeePhone">' + phone + ' <i class="fa fa-phone" aria-hidden="true"></i></span><br><span class="startdate">' + start + ' </span><br><i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i><i class="fa fa-trash-o deleteButton" aria-hidden="true"></i><button class="showChecklist">Training Checklist</button><button class="updateButton">Submit</button>');
+                        });
+
 
 
                         $('.updateButton').click(function() {
@@ -312,11 +340,13 @@ $(document).ready(function() {
 						var span = document.getElementsByClassName("close")[0];
 						// When the user clicks on <span> (x), close the modal
 						span.onclick = function() {
+                        
     						modal.style.display = "none";
 						}
 
 						window.onclick = function(event) {
     					if (event.target == modal) {
+
         				modal.style.display = "none";
     						}
 								}
